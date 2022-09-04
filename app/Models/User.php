@@ -10,10 +10,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Filament\Models\Contracts\FilamentUser;
+use RalphJSmit\Filament\Notifications\Concerns\FilamentNotifiable;
 
 class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, FilamentNotifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
