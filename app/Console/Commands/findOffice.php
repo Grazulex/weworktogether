@@ -6,7 +6,9 @@ use App\Enums\StatusEnum;
 use App\Models\Office;
 use App\Models\OfficeSearch;
 use App\Models\Search;
+use App\Notifications\OfficesFindedNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Notification;
 use DB;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
@@ -40,23 +42,22 @@ class findOffice extends Command
         foreach ($searches as $search) {
             $count = 0;
             foreach ($offices as $office) {
-                if ($office->user_id != $search->user_id) {
-                    if (!OfficeSearch::where('search_id', $search->id)->where('office_id', $office->id)->first()) {
-                        $distance = $this->distance($search->location->lat, $search->location->lng, $office->location->lat, $office->location->lng);
-                        if ($distance <= $search->distance) {
-                            $this->info("{$office->id}");
-                            OfficeSearch::create([
-                                'search_id' => $search->id,
-                                'office_id' => $office->id,
-                                'distance' => $distance
-                            ]);
-                            $count++;
-                        }
+                //if ($office->user_id != $search->user_id) {
+                if (!OfficeSearch::where('search_id', $search->id)->where('office_id', $office->id)->first()) {
+                    $distance = $this->getDistance($search->location->x, $search->location->y, $office->location->x, $office->location->y);
+                    if ($distance <= $search->distance) {
+                        OfficeSearch::create([
+                            'search_id' => $search->id,
+                            'office_id' => $office->id,
+                            'distance' => $distance
+                        ]);
+                        $count++;
                     }
                 }
+                //}
             }
             if ($count > 0) {
-                //notification
+                Notification::send($search->user, new OfficesFindedNotification($count));
             }
         }
     }

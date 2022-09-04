@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Enums\StatusEnum;
 use App\Models\Office;
+use App\Notifications\OfficesValidedNotification;
+use Notification;
 
 class OfficeObserver
 {
@@ -28,6 +30,7 @@ class OfficeObserver
     {
         if ($office->verified_at) {
             $office->status = StatusEnum::OPEN->value;
+            Notification::send($office->user, new OfficesValidedNotification($office));
         } else {
             $office->status = StatusEnum::VALIDATION->value;
         }

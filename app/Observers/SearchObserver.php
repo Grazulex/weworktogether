@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Enums\StatusEnum;
 use App\Models\Search;
+use App\Notifications\SearchesValidedNotification;
+use Notification;
 
 class SearchObserver
 {
@@ -28,6 +30,7 @@ class SearchObserver
     {
         if ($search->verified_at) {
             $search->status = StatusEnum::OPEN->value;
+            Notification::send($search->user, new SearchesValidedNotification($search));
         } else {
             $search->status = StatusEnum::VALIDATION->value;
         }

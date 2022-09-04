@@ -9,6 +9,7 @@ return [
     'notifications' => [
         // Add the notification classes that your users are allowed to send.
         TestNotification::class,
+        OfficesFindedNotification::class,
     ],
 
     'notifiables' => [
