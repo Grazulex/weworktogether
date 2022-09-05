@@ -30,7 +30,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
     {
         return FilamentNotification::make()
             ->message(function (self $notification) {
-                return "We have find {$notification->OfficeName} office(s) for you.";
+                return "We have find {$notification->count} office(s) for you.";
             });
     }
 
