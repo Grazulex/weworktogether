@@ -28,10 +28,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make()
-            ->message(function (self $notification) {
-                return "We have find {$notification->count} office(s) for you.";
-            });
+        return FilamentNotification::make();
     }
 
     /**
@@ -68,7 +65,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
     public function toArray($notifiable)
     {
         return [
-            'count' => $this->count,
+            'data' => 'We have ' . $this->count . ' office(s) for you.',
         ];
     }
 }

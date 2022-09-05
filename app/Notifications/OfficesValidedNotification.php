@@ -30,10 +30,7 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make()
-            ->message(function (self $notification) {
-                return "We have valided you office: {$notification->OfficeName}.";
-            });
+        return FilamentNotification::make();
     }
 
     /**
@@ -71,7 +68,7 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
     public function toArray($notifiable)
     {
         return [
-            'OfficeName' => $this->office->id,
+            'data' => 'We have valided you office: ' . $this->office->name,
         ];
     }
 }
