@@ -71,7 +71,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
     public function toArray($notifiable)
     {
         return [
-            'search' => $this->search,
+            'search' => $this->search->id,
         ];
     }
 }
