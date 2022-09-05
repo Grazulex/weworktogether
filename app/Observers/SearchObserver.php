@@ -30,7 +30,7 @@ class SearchObserver
     {
 
         if ($search->wasChanged('status') && ($search->status === StatusEnum::OPEN)) {
-            Notification::send($search->user, new SearchesValidedNotification($search));
+            Notification::send($search->user, new SearchesValidedNotification('Search', $search->name));
         }
     }
 

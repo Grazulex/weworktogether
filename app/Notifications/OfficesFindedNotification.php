@@ -65,7 +65,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
     public function toArray($notifiable)
     {
         return [
-            'data' => 'We have ' . $this->count . ' office(s) for you.',
+            'message' => 'We have ' . $this->count . ' office(s) for you.',
         ];
     }
 }

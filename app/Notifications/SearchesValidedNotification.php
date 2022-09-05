@@ -2,9 +2,10 @@
 
 namespace App\Notifications;
 
-use App\Models\Search;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -15,22 +16,32 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
 {
     use Queueable, StoresNotificationInDatabase;
 
-
-    private Search $search;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Search $search)
-    {
-        $this->search = $search;
+    public function __construct(
+        public string $type,
+        public string $name
+    ) {
     }
 
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make();
+        return FilamentNotification::make()
+            ->form([
+                TextInput::make('type')
+                    ->label('Type')
+                    ->required()
+                    ->columnSpan(2),
+                Textarea::make('message')
+                    ->label('Message')
+                    ->columnSpan(2),
+            ])
+            ->message(fn (self $notification) => $notification->type)
+            ->description(fn (self $notification) => "We have valided you search: {$notification->name}");
     }
 
     /**
@@ -53,22 +64,9 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have valided you search: ' . $this->search->name)
+            ->line('We have valided you search: ' . $this->name)
             ->line('This search is now on-line.')
             ->action('Show your search', url('/'))
             ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toDatabase($notifiable)
-    {
-        return [
-            'We have valided you search: ' . $this->search->name,
-        ];
     }
 }
