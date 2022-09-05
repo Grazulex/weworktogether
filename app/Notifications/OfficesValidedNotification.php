@@ -71,7 +71,7 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
     public function toArray($notifiable)
     {
         return [
-            'OfficeName' => $this->office->name,
+            'OfficeName' => $this->office->id,
         ];
     }
 }
