@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Notifications\AdminNewUserNotification;
 use App\Notifications\OfficesFindedNotification;
 use App\Notifications\OfficesValidedNotification;
 use App\Notifications\SearchesValidedNotification;
@@ -14,7 +15,8 @@ return [
         TestNotification::class,
         OfficesFindedNotification::class,
         OfficesValidedNotification::class,
-        SearchesValidedNotification::class
+        SearchesValidedNotification::class,
+        AdminNewUserNotification::class,
     ],
 
     'notifiables' => [

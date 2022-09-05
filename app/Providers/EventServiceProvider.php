@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\SendNewUserNotification;
 use App\Models\Office;
 use App\Models\Search;
 use App\Observers\OfficeObserver;
@@ -21,6 +22,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            SendNewUserNotification::class
         ],
     ];
 
