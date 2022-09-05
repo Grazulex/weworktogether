@@ -30,7 +30,11 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make();
+        return FilamentNotification::make()
+            ->message(function (self $notification) {
+                return "We have valided you search: {$notification->SearchName}.";
+            })
+            ->icon('heroicons-o-check-circle', 'success');
     }
 
     /**
@@ -68,7 +72,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
     public function toArray($notifiable)
     {
         return [
-            'message' => 'We have valided you search: ' . $this->search->name,
+            'SearchName' => $this->search->name,
         ];
     }
 }
