@@ -26,13 +26,10 @@ class OfficeObserver
      * @param  \App\Models\Office  $office
      * @return void
      */
-    public function updating(Office $office)
+    public function updated(Office $office)
     {
-        if ($office->verified_at) {
-            $office->status = StatusEnum::OPEN->value;
+        if ($office->wasChanged('status') && ($office->status === StatusEnum::OPEN)) {
             Notification::send($office->user, new OfficesValidedNotification($office));
-        } else {
-            $office->status = StatusEnum::VALIDATION->value;
         }
     }
 

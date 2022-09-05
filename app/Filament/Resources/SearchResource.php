@@ -43,6 +43,13 @@ class SearchResource extends Resource
                     ->options(User::all()->pluck('name', 'id'))
                     ->required()
                     ->visible(Auth::user()->is_admin),
+                Forms\Components\DateTimePicker::make('verified_at')
+                    ->required()
+                    ->visible(Auth::user()->is_admin),
+                Forms\Components\Select::make('status')
+                    ->options(StatusEnum::class)
+                    ->required()
+                    ->visible(Auth::user()->is_admin),
                 Forms\Components\TextInput::make('name')
                     ->helperText('Give an easy name for everyone ("looking for nice college", "why not be together",..)')
                     ->required()
@@ -66,9 +73,6 @@ class SearchResource extends Resource
                     ->setScrollWheelZoom(false)
                     ->setZoomLevel(10)
                     ->required(),
-                Forms\Components\DateTimePicker::make('verified_at')
-                    ->required()
-                    ->visible(Auth::user()->is_admin),
             ]);
     }
 

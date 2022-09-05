@@ -26,13 +26,11 @@ class SearchObserver
      * @param  \App\Models\Search  $search
      * @return void
      */
-    public function updating(Search $search)
+    public function updated(Search $search)
     {
-        if ($search->verified_at) {
-            $search->status = StatusEnum::OPEN->value;
+
+        if ($search->wasChanged('status') && ($search->status === StatusEnum::OPEN)) {
             Notification::send($search->user, new SearchesValidedNotification($search));
-        } else {
-            $search->status = StatusEnum::VALIDATION->value;
         }
     }
 

@@ -216,6 +216,10 @@ class OfficeResource extends Resource
                                 ->schema([
                                     Forms\Components\DateTimePicker::make('verified_at')
                                         ->required(),
+                                    Forms\Components\Select::make('status')
+                                        ->options(StatusEnum::class)
+                                        ->required()
+                                        ->visible(Auth::user()->is_admin),
                                 ])->columns(2),
                         ])->visible(Auth::user()->is_admin),
                 ])
