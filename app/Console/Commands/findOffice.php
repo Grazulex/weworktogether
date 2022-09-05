@@ -57,7 +57,7 @@ class findOffice extends Command
                 //}
             }
             if ($count > 0) {
-                Notification::send($search->user, new OfficesFindedNotification($count));
+                Notification::send($search->user, new OfficesFindedNotification('Matching', $count));
             }
         }
     }

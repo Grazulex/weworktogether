@@ -5,6 +5,8 @@ namespace App\Notifications;
 use App\Models\Office;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -15,22 +17,32 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
 {
     use Queueable, StoresNotificationInDatabase;
 
-
-    private Office $office;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Office $office)
-    {
-        $this->office = $office;
+    public function __construct(
+        public string $type,
+        public string $name
+    ) {
     }
 
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make();
+        return FilamentNotification::make()
+            ->form([
+                TextInput::make('type')
+                    ->label('Type')
+                    ->required()
+                    ->columnSpan(2),
+                Textarea::make('message')
+                    ->label('Message')
+                    ->columnSpan(2),
+            ])
+            ->message(fn (self $notification) => $notification->type)
+            ->description(fn (self $notification) => "We have valided your office: '{$notification->name}'");
     }
 
     /**
@@ -53,22 +65,9 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have valided you office: ' . $this->office->name)
+            ->line('We have valided you office: ' . $this->name)
             ->line('This office is now on-line.')
             ->action('Show your office', url('/'))
             ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            'message' => 'We have valided you office: ' . $this->office->name,
-        ];
     }
 }

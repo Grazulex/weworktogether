@@ -4,6 +4,8 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -15,20 +17,26 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
     use Queueable, StoresNotificationInDatabase;
 
 
-    private int $count;
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct(int $count)
-    {
-        $this->count = $count;
+    public function __construct(
+        public string $type,
+        public string $count
+    ) {
     }
 
     public static function toFilamentNotification(): FilamentNotification
     {
-        return FilamentNotification::make();
+        return FilamentNotification::make()
+            ->form([
+                TextInput::make('type')
+                    ->label('Type')
+                    ->required()
+                    ->columnSpan(2),
+                Textarea::make('message')
+                    ->label('Message')
+                    ->columnSpan(2),
+            ])
+            ->message(fn (self $notification) => $notification->type)
+            ->description(fn (self $notification) => "We have find '{$notification->count}' offie(s) for you");
     }
 
     /**
@@ -54,18 +62,5 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
             ->line('We have find' . $this->count . ' office(s) for you.')
             ->action('Show all the offices', url('/'))
             ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            'message' => 'We have ' . $this->count . ' office(s) for you.',
-        ];
     }
 }

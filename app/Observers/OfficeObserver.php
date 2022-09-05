@@ -29,7 +29,7 @@ class OfficeObserver
     public function updated(Office $office)
     {
         if ($office->wasChanged('status') && ($office->status === StatusEnum::OPEN)) {
-            Notification::send($office->user, new OfficesValidedNotification($office));
+            Notification::send($office->user, new OfficesValidedNotification('Validation', $office->name));
         }
     }
 

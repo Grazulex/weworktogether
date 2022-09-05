@@ -41,7 +41,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
                     ->columnSpan(2),
             ])
             ->message(fn (self $notification) => $notification->type)
-            ->description(fn (self $notification) => "We have valided you search: {$notification->name}");
+            ->description(fn (self $notification) => "We have valided your search: '{$notification->name}'");
     }
 
     /**
