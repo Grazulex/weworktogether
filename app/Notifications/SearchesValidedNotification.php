@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\Office;
 use App\Models\Search;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

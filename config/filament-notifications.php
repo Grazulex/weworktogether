@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\User;
+use App\Notifications\OfficesFindedNotification;
+use App\Notifications\OfficesValidedNotification;
+use App\Notifications\SearchesValidedNotification;
 use RalphJSmit\Filament\Notifications\Filament\Pages\Notifications;
 use RalphJSmit\Filament\Notifications\Filament\Resources\NotificationResource;
 use RalphJSmit\Filament\Notifications\Models\DatabaseNotification;
@@ -10,6 +13,8 @@ return [
         // Add the notification classes that your users are allowed to send.
         TestNotification::class,
         OfficesFindedNotification::class,
+        OfficesValidedNotification::class,
+        SearchesValidedNotification::class
     ],
 
     'notifiables' => [
