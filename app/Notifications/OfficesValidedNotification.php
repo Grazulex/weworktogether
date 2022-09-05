@@ -33,8 +33,7 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
         return FilamentNotification::make()
             ->message(function (self $notification) {
                 return "We have valided you office: {$notification->OfficeName}.";
-            })
-            ->icon('heroicons-o-check-circle', 'success');
+            });
     }
 
     /**

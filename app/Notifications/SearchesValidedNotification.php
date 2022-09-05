@@ -33,8 +33,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
         return FilamentNotification::make()
             ->message(function (self $notification) {
                 return "We have valided you search: {$notification->SearchName}.";
-            })
-            ->icon('heroicons-o-check-circle', 'success');
+            });
     }
 
     /**
