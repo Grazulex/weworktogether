@@ -68,7 +68,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
     public function toArray($notifiable)
     {
         return [
-            'data' => 'We have valided you search: ' . $this->search->name,
+            'message' => 'We have valided you search: ' . $this->search->name,
         ];
     }
 }
