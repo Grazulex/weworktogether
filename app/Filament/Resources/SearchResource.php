@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Enums\StatusEnum;
 use App\Filament\Resources\SearchResource\Pages;
 use App\Filament\Resources\SearchResource\RelationManagers;
+use App\Models\Office;
 use App\Models\Search;
 use App\Models\User;
 use Filament\Forms;
@@ -101,6 +102,7 @@ class SearchResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
