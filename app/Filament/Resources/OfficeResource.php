@@ -249,6 +249,7 @@ class OfficeResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -267,7 +268,7 @@ class OfficeResource extends Resource
         return [
             'index' => Pages\ListOffices::route('/'),
             'create' => Pages\CreateOffice::route('/create'),
-            'edit' => Pages\EditOffice::route('/{record}/edit'),
+            'edit' => Pages\EditOffice::route('/{record}/edit')
         ];
     }
 }

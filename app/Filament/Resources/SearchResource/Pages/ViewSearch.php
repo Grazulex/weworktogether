@@ -16,12 +16,6 @@ class ViewSearch extends ViewRecord
       return $this->getResource()::getUrl('index');
    }
 
-   protected function getActions(): array
-   {
-      return [
-         //
-      ];
-   }
 
    protected function getFooterWidgets(): array
    {

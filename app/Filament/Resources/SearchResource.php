@@ -126,7 +126,8 @@ class SearchResource extends Resource
             'index' => Pages\ListSearches::route('/'),
             'create' => Pages\CreateSearch::route('/create'),
             'edit' => Pages\EditSearch::route('/{record}/edit'),
-            'view' => Pages\ViewSearch::route('/{record}')
+            'view' => Pages\ViewSearch::route('/{record}'),
+            'detail' => Pages\DetailOffice::route('/{office}/detail'),
         ];
     }
 }

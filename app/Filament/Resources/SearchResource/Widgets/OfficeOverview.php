@@ -63,8 +63,7 @@ class OfficeOverview extends BaseWidget
          Action::make('detail')
             ->color('secondary')
             ->icon('heroicon-s-eye')
-            ->url(fn (OfficeSearch $record): string => route('filament.resources.offices.edit', $record->office))
-            ->openUrlInNewTab(),
+            ->url(fn (OfficeSearch $record): string => route('filament.resources.searches.detail', $record->office)),
          Action::make('contact')
             ->color('success')
             ->icon('heroicon-s-pencil')
