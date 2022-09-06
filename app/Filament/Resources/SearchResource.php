@@ -43,14 +43,17 @@ class SearchResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->options(User::all()->pluck('name', 'id'))
                     ->required()
-                    ->visible(Auth::user()->is_admin),
+                    ->visible(Auth::user()->is_admin)
+                    ->hiddenOn('view'),
                 Forms\Components\DateTimePicker::make('verified_at')
                     ->required()
-                    ->visible(Auth::user()->is_admin),
+                    ->visible(Auth::user()->is_admin)
+                    ->hiddenOn('view'),
                 Forms\Components\Select::make('status')
                     ->options(StatusEnum::class)
                     ->required()
-                    ->visible(Auth::user()->is_admin),
+                    ->visible(Auth::user()->is_admin)
+                    ->hiddenOn('view'),
                 Forms\Components\TextInput::make('name')
                     ->helperText('Give an easy name for everyone ("looking for nice college", "why not be together",..)')
                     ->required()
@@ -102,6 +105,7 @@ class SearchResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label('View offices'),
 
             ])
             ->bulkActions([
@@ -122,6 +126,7 @@ class SearchResource extends Resource
             'index' => Pages\ListSearches::route('/'),
             'create' => Pages\CreateSearch::route('/create'),
             'edit' => Pages\EditSearch::route('/{record}/edit'),
+            'view' => Pages\ViewSearch::route('/{record}')
         ];
     }
 }
