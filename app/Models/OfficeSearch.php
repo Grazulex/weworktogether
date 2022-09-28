@@ -10,14 +10,10 @@ class OfficeSearch extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'search_id',
-        'office_id',
-        'distance'
-    ];
+    protected $fillable = ["search_id", "office_id", "distance"];
 
     protected $casts = [
-        'distance' => 'integer',
+        "distance" => "integer",
     ];
 
     public function search(): BelongsTo

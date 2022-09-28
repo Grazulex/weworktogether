@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Filament\Models\Contracts\FilamentUser;
@@ -21,13 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'limit',
-        'is_admin',
-    ];
+    protected $fillable = ["name", "email", "password", "limit", "is_admin"];
 
     public function canAccessFilament(): bool
     {
@@ -39,10 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ["password", "remember_token"];
 
     /**
      * The attributes that should be cast.
@@ -50,8 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
+        "email_verified_at" => "datetime",
+        "is_admin" => "boolean",
     ];
 
     public function offices(): HasMany
@@ -66,6 +56,12 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
     public function getFullnameAttribute(): string
     {
-        return $this->name . ' | o:' . count($this->offices) . '-s:' . count($this->searches) . '-l' . $this->limit;
+        return $this->name .
+            " | o:" .
+            count($this->offices) .
+            "-s:" .
+            count($this->searches) .
+            "-l" .
+            $this->limit;
     }
 }

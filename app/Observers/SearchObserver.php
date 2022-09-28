@@ -28,9 +28,14 @@ class SearchObserver
      */
     public function updated(Search $search)
     {
-
-        if ($search->wasChanged('status') && ($search->status === StatusEnum::OPEN)) {
-            Notification::send($search->user, new SearchesValidedNotification('Validation', $search->name));
+        if (
+            $search->wasChanged("status") &&
+            $search->status === StatusEnum::OPEN
+        ) {
+            Notification::send(
+                $search->user,
+                new SearchesValidedNotification("Validation", $search->name)
+            );
         }
     }
 

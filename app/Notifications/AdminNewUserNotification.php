@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Filament\Forms\Components\Textarea;
@@ -24,12 +23,6 @@ class AdminNewUserNotification extends Notification implements AsFilamentNotific
     ) {
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
         return ['mail', 'database'];
@@ -51,12 +44,6 @@ class AdminNewUserNotification extends Notification implements AsFilamentNotific
             ->description(fn (self $notification) => "New user created '{$notification->userName}' with email '{$notification->userEmail}'");
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
