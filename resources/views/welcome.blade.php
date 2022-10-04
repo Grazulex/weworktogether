@@ -103,7 +103,7 @@
 
             <div class="columns fight-isolation is-vcentered">
                 <div class="column is-7 col-visual">
-                    <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash" alt="" />
+                    <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
                 </div>
                 <div class="column is-5 col-text">
                     <h2 class="h2-title">
