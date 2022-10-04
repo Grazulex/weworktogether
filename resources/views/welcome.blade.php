@@ -103,7 +103,7 @@
 
             <div class="columns fight-isolation is-vcentered">
                 <div class="column is-7 col-visual">
-                    <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
+                    <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash" alt="" />
                 </div>
                 <div class="column is-5 col-text">
                     <h2 class="h2-title">
@@ -156,7 +156,7 @@
                 </div>
                 <div class="column is-4">
                     <a href="article.html">
-                        <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
+                        <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
                         <p class="tag-item">
                             working, wellbeing
                         </p>
