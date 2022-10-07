@@ -99,7 +99,7 @@ class SearchResource extends Resource
                     ->dateTime()
                     ->visible(Auth::user()->is_admin),
                 Tables\Columns\BadgeColumn::make("offices_count")
-                    ->label("Office(s) finded")
+                    ->label("Office's found")
                     ->counts("offices"),
             ])
             ->filters([
@@ -115,8 +115,8 @@ class SearchResource extends Resource
     public static function getRelations(): array
     {
         return [
-                //
-            ];
+            //
+        ];
     }
 
     public static function getPages(): array

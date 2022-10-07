@@ -72,7 +72,7 @@ class OfficeResource extends Resource
                                         "description"
                                     )
                                         ->helperText(
-                                            "Explain in a few lines why this sharing"
+                                            "Tell other users about your coworking space"
                                         )
                                         ->disableToolbarButtons([
                                             "attachFiles",
@@ -112,7 +112,7 @@ class OfficeResource extends Resource
                                 ->description("Information about your home")
                                 ->schema([
                                     Forms\Components\TextInput::make("places")
-                                        ->label("Free place(s)")
+                                        ->label("How many people can you share your office with?")
                                         ->helperText(
                                             "How many people are you inviting"
                                         )
@@ -165,7 +165,7 @@ class OfficeResource extends Resource
                                     )
                                         ->label("Parking")
                                         ->helperText(
-                                            "Do you have a parking space for your visitor"
+                                            "Do you have a parking space for your co-workers?"
                                         )
                                         ->required()
                                         ->default(true),
@@ -174,7 +174,7 @@ class OfficeResource extends Resource
                                     )
                                         ->label("Meeting Room")
                                         ->helperText(
-                                            "Do you have a space where your visitor could isolate themselves for phone calls or other?"
+                                            "Do you have a quiet space where your co-workers can isolate themselves for phone calls or meeting?"
                                         )
                                         ->required()
                                         ->default(true),
@@ -187,7 +187,7 @@ class OfficeResource extends Resource
                                         ->max(5)
                                         ->default(5),
                                     Rating::make("workspace")
-                                        ->label("Workspace")
+                                        ->label("Workspace size")
                                         ->helperText(
                                             "If you should rate your proposed workspace size out of 5"
                                         )
@@ -210,21 +210,21 @@ class OfficeResource extends Resource
                                     Forms\Components\Toggle::make("give_coffee")
                                         ->label("Coffee")
                                         ->helperText(
-                                            "Do you offer to share your best coffee for free"
+                                            "Do you offer to share coffee for free?"
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make("give_water")
                                         ->label("Water")
                                         ->helperText(
-                                            "Do you offer to share your water for free"
+                                            "Do you offer to share water for free?"
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make("have_fridge")
                                         ->label("Fridge")
                                         ->helperText(
-                                            "Do you have a fridge in which your visitor can store his dinner"
+                                            "Do you have a fridge where your co-workers can store their food and/or drinks?"
                                         )
                                         ->required()
                                         ->default(true),
@@ -233,7 +233,7 @@ class OfficeResource extends Resource
                                     )
                                         ->label("Microwave")
                                         ->helperText(
-                                            "Do you have a microwave in which your visitor can heat his dinner"
+                                            "Do you offer to share a microwave for free?"
                                         )
                                         ->required()
                                         ->default(true),
@@ -242,7 +242,7 @@ class OfficeResource extends Resource
                         ]),
                     Wizard\Step::make("Relationship")
                         ->description(
-                            "For a good cohabitation, do you accept any type of person"
+                            "For a good cohabitation, do you accept any type of person?"
                         )
                         ->schema([
                             Section::make("good relationship")
@@ -251,7 +251,7 @@ class OfficeResource extends Resource
                                     Forms\Components\Toggle::make("have_garden")
                                         ->label("Garden")
                                         ->helperText(
-                                            "Do you have a garden where your visitor can get some fresh air?"
+                                            "Do you offer to share a private garden?"
                                         )
                                         ->required()
                                         ->default(false),
@@ -260,7 +260,7 @@ class OfficeResource extends Resource
                                     )
                                         ->label("Smoking")
                                         ->helperText(
-                                            "Do you accept a smoker whether it is to smoke outside or inside"
+                                            "Do you accept to share your workspace with smokers?"
                                         )
                                         ->required()
                                         ->default(false),
@@ -269,7 +269,7 @@ class OfficeResource extends Resource
                                     )
                                         ->label("Languages")
                                         ->helperText(
-                                            "What languages ​​do you speak"
+                                            "What languages do you speak?"
                                         )
                                         ->required()
                                         ->schema([
@@ -347,8 +347,8 @@ class OfficeResource extends Resource
     public static function getRelations(): array
     {
         return [
-                //
-            ];
+            //
+        ];
     }
 
     public static function getPages(): array

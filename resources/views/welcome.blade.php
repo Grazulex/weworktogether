@@ -53,7 +53,7 @@
                         <a href="blog.html" class="link">Blog</a>
                     </li>
                     <li class="link-item">
-                        <a href="login.html" class="btn btn-orange">Log In</a>
+                        <a href="{{ route('filament.pages.dashboard') }}" class="btn btn-orange">Log In</a>
                     </li>
                 </ul>
 
@@ -262,7 +262,7 @@
                 </div>
 
                 <p class="text copyright">
-                    © 2022 We Share Our Workspace. All Rights Reserved.
+                    © 2022 We Share Our Workspace powerd by JNKConsult BV. All Rights Reserved.
                 </p>
 
             </div>

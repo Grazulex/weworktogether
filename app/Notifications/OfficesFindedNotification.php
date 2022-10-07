@@ -36,7 +36,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
                     ->columnSpan(2),
             ])
             ->message(fn (self $notification) => $notification->type)
-            ->description(fn (self $notification) => "We have find '{$notification->count}' offie(s) for you");
+            ->description(fn (self $notification) => "We have find '{$notification->count}' office(s) for you");
     }
 
     /**
