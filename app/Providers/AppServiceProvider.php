@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             new HtmlString('<meta name="description" content="Share office, desk or table to work together">'),
         ]);
         Filament::serving(function () {
-            // ... 
+            // ...
             Filament::registerStyles([
                 asset('filament/assets/css/leaflet.css'),
                 asset('filament/assets/css/geosearch.css'),

@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditOffice extends EditRecord
 {
     protected static string $resource = OfficeResource::class;
+
     protected ?string $maxContentWidth = 'full';
 
     protected function getActions(): array

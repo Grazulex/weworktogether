@@ -49,8 +49,8 @@ return [
 
     'locales' => [
         //'ar'          => ['name' => 'Arabic',                 'script' => 'Arab', 'native' => 'العربية', 'flag_code' => 'sa'],
-        'en'          => ['name' => 'English',                'script' => 'Latn', 'native' => 'English', 'flag_code' => 'us'],
-        'fr'          => ['name' => 'French',                 'script' => 'Latn', 'native' => 'français', 'flag_code' => 'fr'],
+        'en' => ['name' => 'English',                'script' => 'Latn', 'native' => 'English', 'flag_code' => 'us'],
+        'fr' => ['name' => 'French',                 'script' => 'Latn', 'native' => 'français', 'flag_code' => 'fr'],
 
         //'ace'         => ['name' => 'Achinese',               'script' => 'Latn', 'native' => 'Aceh', 'flag_code' => '' ],
         //'af'          => ['name' => 'Afrikaans',              'script' => 'Latn', 'native' => 'Afrikaans', 'flag_code' => '' ],
@@ -176,7 +176,7 @@ return [
         //'mtr'         => ['name' => 'Mewari',                 'script' => 'Latn', 'native' => 'Mewari', 'flag_code' => '' ],
         //'mua'         => ['name' => 'Mundang',                'script' => 'Latn', 'native' => 'Mundang', 'flag_code' => '' ],
         //'mi'          => ['name' => 'Māori',                  'script' => 'Latn', 'native' => 'Māori', 'flag_code' => '' ],
-        'nl'          => ['name' => 'Dutch',                  'script' => 'Latn', 'native' => 'Nederlands', 'flag_code' => ''],
+        'nl' => ['name' => 'Dutch',                  'script' => 'Latn', 'native' => 'Nederlands', 'flag_code' => ''],
         //'nmg'         => ['name' => 'Kwasio',                 'script' => 'Latn', 'native' => 'ngumba', 'flag_code' => '' ],
         //'yav'         => ['name' => 'Yangben',                'script' => 'Latn', 'native' => 'nuasue', 'flag_code' => '' ],
         //'nn'          => ['name' => 'Norwegian Nynorsk',      'script' => 'Latn', 'native' => 'nynorsk', 'flag_code' => '' ],

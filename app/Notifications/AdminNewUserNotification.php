@@ -2,10 +2,10 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -47,7 +47,7 @@ class AdminNewUserNotification extends Notification implements AsFilamentNotific
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('A new user is created' . $this->userName . ' with email ' . $this->userEmail)
+            ->line('A new user is created'.$this->userName.' with email '.$this->userEmail)
             ->action('Show all the users', url('/'))
             ->line('Thank you for using our application!');
     }

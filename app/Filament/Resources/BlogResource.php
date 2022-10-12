@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
-use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use Closure;
 use Filament\Forms;
@@ -11,8 +10,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Str;
 
 class BlogResource extends Resource
@@ -29,7 +26,7 @@ class BlogResource extends Resource
                     ->required()
                     ->reactive()
                     ->afterStateUpdated(function (Closure $get, Closure $set, ?string $state) {
-                        if (!$get('is_slug_changed_manually') && filled($state)) {
+                        if (! $get('is_slug_changed_manually') && filled($state)) {
                             $set('slug', Str::slug($state));
                         }
                     })

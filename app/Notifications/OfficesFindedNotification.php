@@ -2,10 +2,10 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -15,7 +15,6 @@ use RalphJSmit\Filament\Notifications\FilamentNotification;
 class OfficesFindedNotification extends Notification implements AsFilamentNotification, ShouldQueue
 {
     use Queueable, StoresNotificationInDatabase;
-
 
     public function __construct(
         public string $type,
@@ -59,7 +58,7 @@ class OfficesFindedNotification extends Notification implements AsFilamentNotifi
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have find' . $this->count . ' office(s) for you.')
+            ->line('We have find'.$this->count.' office(s) for you.')
             ->action('Show all the offices', url('/'))
             ->line('Thank you for using our application!');
     }

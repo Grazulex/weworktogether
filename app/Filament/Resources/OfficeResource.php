@@ -2,18 +2,18 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\StatusEnum;
 use App\Filament\Resources\OfficeResource\Pages;
 use App\Models\Office;
+use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Wizard;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Heloufir\FilamentLeafLetGeoSearch\Forms\Components\LeafletInput;
-use App\Enums\StatusEnum;
-use App\Models\User;
-use Filament\Forms\Components\Wizard;
-use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Yepsua\Filament\Forms\Components\Rating;
@@ -22,17 +22,20 @@ class OfficeResource extends Resource
 {
     protected static ?string $model = Office::class;
 
-    protected static ?string $navigationIcon = "heroicon-o-collection";
-    protected static ?string $navigationGroup = "Yours shares & requests";
-    protected static ?string $navigationLabel = "Yours offices";
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected ?string $maxContentWidth = "full";
+    protected static ?string $navigationGroup = 'Yours shares & requests';
+
+    protected static ?string $navigationLabel = 'Yours offices';
+
+    protected ?string $maxContentWidth = 'full';
 
     public static function getEloquentQuery(): Builder
     {
         if (auth()->user()->is_admin === true) {
             return parent::getEloquentQuery();
         }
+
         return parent::getEloquentQuery()->whereBelongsTo(auth()->user());
     }
 
@@ -41,61 +44,61 @@ class OfficeResource extends Resource
         return $form
             ->schema([
                 Wizard::make([
-                    Wizard\Step::make("Location")
+                    Wizard\Step::make('Location')
                         ->description(
-                            "Information about the location of the office"
+                            'Information about the location of the office'
                         )
                         ->schema([
-                            Section::make("Your home")
-                                ->description("Information about your home")
+                            Section::make('Your home')
+                                ->description('Information about your home')
                                 ->schema([
-                                    Forms\Components\Select::make("user_id")
+                                    Forms\Components\Select::make('user_id')
                                         ->options(
-                                            User::all()->pluck("name", "id")
+                                            User::all()->pluck('name', 'id')
                                         )
                                         ->required()
                                         ->visible(Auth::user()->is_admin),
-                                    Forms\Components\TextInput::make("name")
+                                    Forms\Components\TextInput::make('name')
                                         ->helperText(
                                             'Give an easy name for everyone ("nice little office", "together one day a week",..)'
                                         )
                                         ->required()
                                         ->maxLength(255),
-                                    Forms\Components\Toggle::make("is_free")
-                                        ->label("Free")
+                                    Forms\Components\Toggle::make('is_free')
+                                        ->label('Free')
                                         ->helperText(
-                                            "Do you offer free sharing"
+                                            'Do you offer free sharing'
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\RichEditor::make(
-                                        "description"
+                                        'description'
                                     )
                                         ->helperText(
-                                            "Tell other users about your coworking space"
+                                            'Tell other users about your coworking space'
                                         )
                                         ->disableToolbarButtons([
-                                            "attachFiles",
-                                            "codeBlock",
+                                            'attachFiles',
+                                            'codeBlock',
                                         ])
                                         ->required(),
-                                    Forms\Components\CheckboxList::make("days")
+                                    Forms\Components\CheckboxList::make('days')
                                         ->helperText(
-                                            "What days can you invite someone to your home"
+                                            'What days can you invite someone to your home'
                                         )
                                         ->options([
-                                            "monday" => "Monday",
-                                            "tuestday" => "Thuesday",
-                                            "wednesday" => "Wednesday",
-                                            "thursday" => "Thursday",
-                                            "friday" => "Friday",
-                                            "saturday" => "Saturday",
-                                            "sunday" => "Sunday",
+                                            'monday' => 'Monday',
+                                            'tuestday' => 'Thuesday',
+                                            'wednesday' => 'Wednesday',
+                                            'thursday' => 'Thursday',
+                                            'friday' => 'Friday',
+                                            'saturday' => 'Saturday',
+                                            'sunday' => 'Sunday',
                                         ])
                                         ->required(),
-                                    LeafletInput::make("location")
+                                    LeafletInput::make('location')
                                         ->helperText(
-                                            "Insert your address. This one will NOT be displayed"
+                                            'Insert your address. This one will NOT be displayed'
                                         )
                                         ->setMapHeight(300)
                                         ->setZoomControl(false)
@@ -105,16 +108,16 @@ class OfficeResource extends Resource
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make("Workspace")
-                        ->description("What do you offer as a workspace?")
+                    Wizard\Step::make('Workspace')
+                        ->description('What do you offer as a workspace?')
                         ->schema([
-                            Section::make("Your home")
-                                ->description("Information about your home")
+                            Section::make('Your home')
+                                ->description('Information about your home')
                                 ->schema([
-                                    Forms\Components\TextInput::make("places")
-                                        ->label("How many people can you share your office with?")
+                                    Forms\Components\TextInput::make('places')
+                                        ->label('How many people can you share your office with?')
                                         ->helperText(
-                                            "How many people are you inviting"
+                                            'How many people are you inviting'
                                         )
                                         ->numeric()
                                         ->minValue(1)
@@ -122,74 +125,74 @@ class OfficeResource extends Resource
                                         ->required()
                                         ->default(1),
                                     Forms\Components\Toggle::make(
-                                        "have_internet"
+                                        'have_internet'
                                     )
-                                        ->label("Internet")
+                                        ->label('Internet')
                                         ->helperText(
-                                            "Do you share a WIFI internet connexion"
+                                            'Do you share a WIFI internet connexion'
                                         )
                                         ->required()
                                         ->default(true),
-                                    Forms\Components\Toggle::make("have_desk")
-                                        ->label("Desk")
+                                    Forms\Components\Toggle::make('have_desk')
+                                        ->label('Desk')
                                         ->helperText(
-                                            "Do you offer a real workdesk (as opposed to a table)"
+                                            'Do you offer a real workdesk (as opposed to a table)'
                                         )
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
-                                        "have_printer"
+                                        'have_printer'
                                     )
-                                        ->label("Printer")
+                                        ->label('Printer')
                                         ->helperText(
-                                            "Do you share your printer"
+                                            'Do you share your printer'
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
-                                        "have_scanner"
+                                        'have_scanner'
                                     )
-                                        ->label("Scanner")
+                                        ->label('Scanner')
                                         ->helperText(
-                                            "Do you share your scanner"
+                                            'Do you share your scanner'
                                         )
                                         ->required()
                                         ->default(false),
-                                    Forms\Components\Toggle::make("have_fax")
-                                        ->label("Fax")
-                                        ->helperText("Do you share your fax")
+                                    Forms\Components\Toggle::make('have_fax')
+                                        ->label('Fax')
+                                        ->helperText('Do you share your fax')
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
-                                        "have_parking"
+                                        'have_parking'
                                     )
-                                        ->label("Parking")
+                                        ->label('Parking')
                                         ->helperText(
-                                            "Do you have a parking space for your co-workers?"
+                                            'Do you have a parking space for your co-workers?'
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
-                                        "have_meeting_room"
+                                        'have_meeting_room'
                                     )
-                                        ->label("Meeting Room")
+                                        ->label('Meeting Room')
                                         ->helperText(
-                                            "Do you have a quiet space where your co-workers can isolate themselves for phone calls or meeting?"
+                                            'Do you have a quiet space where your co-workers can isolate themselves for phone calls or meeting?'
                                         )
                                         ->required()
                                         ->default(true),
-                                    Rating::make("tranquility")
-                                        ->label("Tranquility")
+                                    Rating::make('tranquility')
+                                        ->label('Tranquility')
                                         ->helperText(
-                                            "If you should give a rating out of 5 for the tranquility of the workspace (presence of children, noisy animals, etc.)"
+                                            'If you should give a rating out of 5 for the tranquility of the workspace (presence of children, noisy animals, etc.)'
                                         )
                                         ->min(1)
                                         ->max(5)
                                         ->default(5),
-                                    Rating::make("workspace")
-                                        ->label("Workspace size")
+                                    Rating::make('workspace')
+                                        ->label('Workspace size')
                                         ->helperText(
-                                            "If you should rate your proposed workspace size out of 5"
+                                            'If you should rate your proposed workspace size out of 5'
                                         )
                                         ->min(1)
                                         ->max(5)
@@ -197,109 +200,109 @@ class OfficeResource extends Resource
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make("Eat & drink")
+                    Wizard\Step::make('Eat & drink')
                         ->description(
-                            "Do you offer facilities for eating and drinking?"
+                            'Do you offer facilities for eating and drinking?'
                         )
                         ->schema([
-                            Section::make("Your gift")
+                            Section::make('Your gift')
                                 ->description(
-                                    "Information about your facilities"
+                                    'Information about your facilities'
                                 )
                                 ->schema([
-                                    Forms\Components\Toggle::make("give_coffee")
-                                        ->label("Coffee")
+                                    Forms\Components\Toggle::make('give_coffee')
+                                        ->label('Coffee')
                                         ->helperText(
-                                            "Do you offer to share coffee for free?"
+                                            'Do you offer to share coffee for free?'
                                         )
                                         ->required()
                                         ->default(true),
-                                    Forms\Components\Toggle::make("give_water")
-                                        ->label("Water")
+                                    Forms\Components\Toggle::make('give_water')
+                                        ->label('Water')
                                         ->helperText(
-                                            "Do you offer to share water for free?"
+                                            'Do you offer to share water for free?'
                                         )
                                         ->required()
                                         ->default(true),
-                                    Forms\Components\Toggle::make("have_fridge")
-                                        ->label("Fridge")
+                                    Forms\Components\Toggle::make('have_fridge')
+                                        ->label('Fridge')
                                         ->helperText(
-                                            "Do you have a fridge where your co-workers can store their food and/or drinks?"
+                                            'Do you have a fridge where your co-workers can store their food and/or drinks?'
                                         )
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
-                                        "have_microwave"
+                                        'have_microwave'
                                     )
-                                        ->label("Microwave")
+                                        ->label('Microwave')
                                         ->helperText(
-                                            "Do you offer to share a microwave for free?"
+                                            'Do you offer to share a microwave for free?'
                                         )
                                         ->required()
                                         ->default(true),
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make("Relationship")
+                    Wizard\Step::make('Relationship')
                         ->description(
-                            "For a good cohabitation, do you accept any type of person?"
+                            'For a good cohabitation, do you accept any type of person?'
                         )
                         ->schema([
-                            Section::make("good relationship")
-                                ->description("some important points")
+                            Section::make('good relationship')
+                                ->description('some important points')
                                 ->schema([
-                                    Forms\Components\Toggle::make("have_garden")
-                                        ->label("Garden")
+                                    Forms\Components\Toggle::make('have_garden')
+                                        ->label('Garden')
                                         ->helperText(
-                                            "Do you offer to share a private garden?"
+                                            'Do you offer to share a private garden?'
                                         )
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
-                                        "accept_smoking"
+                                        'accept_smoking'
                                     )
-                                        ->label("Smoking")
+                                        ->label('Smoking')
                                         ->helperText(
-                                            "Do you accept to share your workspace with smokers?"
+                                            'Do you accept to share your workspace with smokers?'
                                         )
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Repeater::make(
-                                        "accept_languages"
+                                        'accept_languages'
                                     )
-                                        ->label("Languages")
+                                        ->label('Languages')
                                         ->helperText(
-                                            "What languages do you speak?"
+                                            'What languages do you speak?'
                                         )
                                         ->required()
                                         ->schema([
                                             Forms\Components\Select::make(
-                                                "Language"
+                                                'Language'
                                             )
                                                 ->options([
-                                                    "FR",
-                                                    "NL",
-                                                    "EN",
-                                                    "DE",
-                                                    "ES",
-                                                    "IT",
-                                                    "Other",
+                                                    'FR',
+                                                    'NL',
+                                                    'EN',
+                                                    'DE',
+                                                    'ES',
+                                                    'IT',
+                                                    'Other',
                                                 ])
                                                 ->required(),
                                         ]),
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make("Control")
-                        ->description("Admin controle")
+                    Wizard\Step::make('Control')
+                        ->description('Admin controle')
                         ->schema([
-                            Section::make("Validation")
-                                ->description("Validation date")
+                            Section::make('Validation')
+                                ->description('Validation date')
                                 ->schema([
                                     Forms\Components\DateTimePicker::make(
-                                        "verified_at"
+                                        'verified_at'
                                     )->required(),
-                                    Forms\Components\Select::make("status")
+                                    Forms\Components\Select::make('status')
                                         ->options(StatusEnum::class)
                                         ->required()
                                         ->visible(Auth::user()->is_admin),
@@ -316,21 +319,21 @@ class OfficeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make("user.fullname")->visible(
+                Tables\Columns\TextColumn::make('user.fullname')->visible(
                     Auth::user()->is_admin
                 ),
-                Tables\Columns\TextColumn::make("name"),
-                Tables\Columns\TextColumn::make("places"),
-                Tables\Columns\BadgeColumn::make("status")
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('places'),
+                Tables\Columns\BadgeColumn::make('status')
                     ->colors([
-                        "primary" => StatusEnum::VALIDATION->value,
-                        "success" => StatusEnum::OPEN->value,
-                        "warning" => StatusEnum::CLOSE->value,
-                        "danger" => StatusEnum::BLOCK->value,
+                        'primary' => StatusEnum::VALIDATION->value,
+                        'success' => StatusEnum::OPEN->value,
+                        'warning' => StatusEnum::CLOSE->value,
+                        'danger' => StatusEnum::BLOCK->value,
                     ])
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make("verified_at")
+                Tables\Columns\TextColumn::make('verified_at')
                     ->dateTime()
                     ->visible(Auth::user()->is_admin),
             ])
@@ -354,9 +357,9 @@ class OfficeResource extends Resource
     public static function getPages(): array
     {
         return [
-            "index" => Pages\ListOffices::route("/"),
-            "create" => Pages\CreateOffice::route("/create"),
-            "edit" => Pages\EditOffice::route("/{record}/edit"),
+            'index' => Pages\ListOffices::route('/'),
+            'create' => Pages\CreateOffice::route('/create'),
+            'edit' => Pages\EditOffice::route('/{record}/edit'),
         ];
     }
 }

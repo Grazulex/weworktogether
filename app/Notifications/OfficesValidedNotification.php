@@ -2,11 +2,10 @@
 
 namespace App\Notifications;
 
-use App\Models\Office;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -27,7 +26,6 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
         public string $name
     ) {
     }
-
 
     public static function toFilamentNotification(): FilamentNotification
     {
@@ -65,7 +63,7 @@ class OfficesValidedNotification extends Notification implements AsFilamentNotif
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have valided you office: ' . $this->name)
+            ->line('We have valided you office: '.$this->name)
             ->line('This office is now on-line.')
             ->action('Show your office', url('/'))
             ->line('Thank you for using our application!');

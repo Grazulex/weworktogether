@@ -13,20 +13,20 @@ class Search extends Model
     use HasFactory;
 
     protected $fillable = [
-        "user_id",
-        "name",
-        "description",
-        "status",
-        "location",
-        "distance",
-        "verified_at",
+        'user_id',
+        'name',
+        'description',
+        'status',
+        'location',
+        'distance',
+        'verified_at',
     ];
 
     protected $casts = [
-        "distance" => "integer",
-        "location" => "object",
-        "status" => StatusEnum::class,
-        "verified_at" => "datetime",
+        'distance' => 'integer',
+        'location' => 'object',
+        'status' => StatusEnum::class,
+        'verified_at' => 'datetime',
     ];
 
     public function user(): BelongsTo

@@ -2,10 +2,10 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use RalphJSmit\Filament\Notifications\Concerns\StoresNotificationInDatabase;
@@ -26,7 +26,6 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
         public string $name
     ) {
     }
-
 
     public static function toFilamentNotification(): FilamentNotification
     {
@@ -64,7 +63,7 @@ class SearchesValidedNotification extends Notification implements AsFilamentNoti
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('We have valided you search: ' . $this->name)
+            ->line('We have valided you search: '.$this->name)
             ->line('This search is now on-line.')
             ->action('Show your search', url('/'))
             ->line('Thank you for using our application!');

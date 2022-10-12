@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\SearchResource\Pages;
 
 use App\Filament\Resources\SearchResource;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateSearch extends CreateRecord

@@ -12,7 +12,6 @@ class DetailOffice extends Page
 
     protected static string $view = 'filament.resources.search-resource.pages.detail-office';
 
-
     public function __construct()
     {
         $this->record = Office::find(request()->route('office'));

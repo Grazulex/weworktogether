@@ -8,7 +8,6 @@ use Notification;
 
 class SendNewUserNotification
 {
-
     /**
      * Handle the event.
      *

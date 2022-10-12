@@ -5,8 +5,6 @@ namespace App\Filament\Resources\OfficeResource\Pages;
 use App\Filament\Resources\OfficeResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 
 class ListOffices extends ListRecords
 {
