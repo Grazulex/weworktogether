@@ -59,7 +59,7 @@
             <div class="columns insights-guidelines">
                 @foreach ($otherBlogs as $blog)
                     <div class="column is-4">
-                        <a href="article.html">
+                        <a href="{{ route('blog_show', $blog->slug ) }}">
                             <img class="visual" src="{{ Storage::url($blog->image)}}" alt="{{ $blog->title }}" />
                             <p class="tag-item">
                                 @foreach ($blog->tags as $tag)
