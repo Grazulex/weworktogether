@@ -79,47 +79,59 @@
 
     <div class="columns insights-guidelines">
         <div class="column is-4">
-            <a href="article.html">
-                <img class="visual" src="images/yasmina-h-p8DjPfqEhW0-unsplash.jpg" alt="" />
+            <a href="{{ route('blog_show', $lastestBlogs[0]->slug ) }}">
+                <img class="visual" src="images/yasmina-h-p8DjPfqEhW0-unsplash.jpg" alt="{{ $lastestBlogs[0]->title }}" />
                 <p class="tag-item">
-                    working, wellbeing, co-working
+                    @foreach ($lastestBlogs[0]->tags as $tag)
+                        {{ $tag }}
+                        @if (!$loop->last)
+                            ,
+                        @endif
+                    @endforeach
                 </p>
                 <p class="item-title">
-                    The most common mistakes when working remote
+                    {{ $lastestBlogs[0]->title }}
                 </p>
                 <p class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna
-                    ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
+                    {{ $lastestBlogs[0]->resume }}
                 </p>
             </a>
         </div>
         <div class="column is-4">
-            <a href="article.html">
-                <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
+            <a href="{{ route('blog_show', $lastestBlogs[1]->slug ) }}">
+                <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="{{ $lastestBlogs[1]->title }}" />
                 <p class="tag-item">
-                    working, wellbeing
+                    @foreach ($lastestBlogs[1]->tags as $tag)
+                        {{ $tag }}
+                        @if (!$loop->last)
+                            ,
+                        @endif
+                    @endforeach
                 </p>
                 <p class="item-title">
-                    How working with others improve your productivity?
+                    {{ $lastestBlogs[1]->title }}
                 </p>
                 <p class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna
-                    ornare malesuada.
+                    {{ $lastestBlogs[1]->resume }}
                 </p>
             </a>
         </div>
         <div class="column is-4">
-            <a href="article.html">
-                <img class="visual" src="images/michael-soledad-NrR6ByFMBas-unsplash.jpg" alt="" />
+            <a href="{{ route('blog_show', $lastestBlogs[2]->slug ) }}">
+                <img class="visual" src="images/michael-soledad-NrR6ByFMBas-unsplash.jpg" alt="{{ $lastestBlogs[2]->title }}" />
                 <p class="tag-item">
-                    working, wellbeing, co-working
+                    @foreach ($lastestBlogs[2]->tags as $tag)
+                        {{ $tag }}
+                        @if (!$loop->last)
+                            ,
+                        @endif
+                    @endforeach
                 </p>
                 <p class="item-title">
-                    How to arrange the best home office setup?
+                    {{ $lastestBlogs[2]->title }}
                 </p>
                 <p class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna
-                    ornare malesuada. Donec eleifend nunc id orci porttitor.
+                    {{ $lastestBlogs[2]->resume }}
                 </p>
             </a>
         </div>

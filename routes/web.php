@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DefaultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
+Route::get('/', DefaultController::class)->name('home');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contact', ContactController::class)->name('contact');
 Route::get('/blogs', [BlogController::class, 'index'])->name('blog');
