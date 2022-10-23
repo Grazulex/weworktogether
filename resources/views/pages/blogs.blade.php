@@ -5,18 +5,23 @@
                 
                 <div class="column is-8 article-featured">
 
-                    <a href="article.html" class="article-item">
+                    <a href="{{ route('blog_show', $lastestBlogs->first()->slug ) }}" class="article-item">
 
-                        <img class="visual" src="images/yasmina-h-p8DjPfqEhW0-unsplash.jpg" alt="" />
+                        <img class="visual" src="{{ Storage::url($lastestBlogs->first()->image)}}" alt="{{ $lastestBlogs->first()->title }}" />
 
                         <p class="tag-item">
-                            working, wellbeing, co-working
+                            @foreach ($lastestBlogs->first()->tags as $tag)
+                                {{ $tag }}
+                                @if (!$loop->last)
+                                    ,
+                                @endif
+                            @endforeach
                         </p>
 
-                        <h2 class="item-title">The most common mistakes when working remote and how to avoid them</h2>
+                        <h2 class="item-title">{{ $lastestBlogs->first()->title }}</h2>
 
                         <p class="text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate asperiores minima molestias quisquam ad voluptatum deleniti veniam provident iusto fugit? Quo porro deserunt facilis aspernatur recusandae eaque delectus maiores officiis. Voluptate asperiores minima molestias quisquam ad voluptatum deleniti veniam provident. Donec eleifend nunc.
+                            {{ $lastestBlogs->first()->resume }}
                         </p>
 
                     </a>
@@ -25,29 +30,39 @@
 
                 <div class="column is-4">
                     
-                    <a href="article.html" class="article-item">
-                        <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
+                    <a href="{{ route('blog_show', $lastestBlogs[1]->slug ) }}" class="article-item">
+                        <img class="visual" src="{{ Storage::url($lastestBlogs[1]->image)}}" alt="{{ $lastestBlogs[1]->title }}" />
                         <p class="tag-item">
-                            working, wellbeing, co-working
+                            @foreach ($lastestBlogs[1]->tags as $tag)
+                                {{ $tag }}
+                                @if (!$loop->last)
+                                    ,
+                                @endif
+                            @endforeach
                         </p>
                         <h2 class="item-title">
-                            The most common mistakes when working remote
+                            {{ $lastestBlogs[1]->title }}
                         </h2>
                         <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor
+                            {{ $lastestBlogs[1]->resume }}
                         </p>
                     </a>
 
-                    <a href="article.html" class="article-item">
-                        <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
+                    <a href="{{ route('blog_show', $lastestBlogs[2]->slug ) }}" class="article-item">
+                        <img class="visual" src="{{ Storage::url($lastestBlogs[2]->image)}}" alt="{{ $lastestBlogs[2]->title }}" />
                         <p class="tag-item">
-                            working, wellbeing, co-working
+                            @foreach ($lastestBlogs[2]->tags as $tag)
+                                {{ $tag }}
+                                @if (!$loop->last)
+                                    ,
+                                @endif
+                            @endforeach
                         </p>
                         <h2 class="item-title">
-                            The most common mistakes when working remote
+                            {{ $lastestBlogs[2]->title }}
                         </h2>
                         <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc.
+                            {{ $lastestBlogs[2]->resume }}
                         </p>
                     </a>
 
@@ -85,38 +100,72 @@
                 
                 <div class="tab-list">
                     <span class="tab-link" data-tab="hp-funding-tab-1">All blogs</span>
-                    <span class="tab-link" data-tab="hp-funding-tab-2">Co-working</span>
-                    <span class="tab-link" data-tab="hp-funding-tab-3">Wellbeing</span>
-                    <span class="tab-link" data-tab="hp-funding-tab-4">Professional development</span>
-                    <span class="tab-link" data-tab="hp-funding-tab-5">Office design</span>
+                        @foreach ($tags as $tag)
+                            <span class="tab-link" data-tab="hp-funding-tab-{{ strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag))) }}">{{ $tag }}</span>
+                        @endforeach
                 </div>
 
                 <div class="tab-content-list">
-                
                     <div class="tab-content-item" id="hp-funding-tab-1">
-                        
-                        <a href="article.html" class="article-item">
+                        @foreach ($blogs as $blog)
+                            <a href="{{ route('blog_show', $blog->slug ) }}" class="article-item">
+                                <div class="columns">
+                                    <div class="column is-4">
+                                        <img class="visual" src="{{ Storage::url($blog->image)}}" alt="{{ $blog->title }}" />
+                                    </div>
+                                    <div class="column is-8">
+                                        <h2 class="item-title">
+                                            {{ $blog->title }}
+                                        </h2>
+                                        <p class="tag-item">
+                                            @foreach ($blog->tags as $tag)
+                                                {{ $tag }}
+                                                @if (!$loop->last)
+                                                    ,
+                                                @endif
+                                            @endforeach
+                                        </p>
+                                        <p class="text">
+                                            {{ $blog->resume}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                        {{ $blogs->links() }}
+                    </div>
+                    
+
+                    @foreach ($blogsByTag as $tag => $blogsTags)
+                    <div class="tab-content-item" id="hp-funding-tab-{{strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag)))}}">
+                        @foreach ($blogsTags as $blog)
+                            <a href="{{ route('blog_show', $blog->slug ) }}" class="article-item">
 
                             <div class="columns">
 
                                 <div class="column is-4">
 
-                                    <img class="visual" src="images/yasmina-h-p8DjPfqEhW0-unsplash.jpg" alt="" />
+                                    <img class="visual" src="{{ Storage::url($blog->image)}}" alt="{{ $blog->title }}" />
 
                                 </div>
 
                                 <div class="column is-8">
 
                                     <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
+                                        {{ $blog->title }}
                                     </h2>
                                     
                                     <p class="tag-item">
-                                        working, wellbeing, co-working
+                                        @foreach ($blog->tags as $tag)
+                                            {{ $tag }}
+                                            @if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
                                     </p>
                                     
                                     <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
+                                        {{ $blog->resume}}
                                     </p>
 
                                 </div>
@@ -124,511 +173,16 @@
                             </div>
 
                         </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/thestandingdesk-r-06nwNK3JM-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/yaSmIna-h-p8djpfqehw0-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/yaSmIna-h-p8djpfqehw0-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/yaSmIna-h-p8djpfqehw0-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/yaSmIna-h-p8djpfqehw0-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/yaSmIna-h-p8djpfqehw0-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
+                        @endforeach
 
                     </div>
+                    @endforeach
 
-                    <div class="tab-content-item" id="hp-funding-tab-2">
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-                        
-                    </div>
-
-                    <div class="tab-content-item" id="hp-funding-tab-3">
-
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                    <div class="tab-content-item" id="hp-funding-tab-4">
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                    <div class="tab-content-item" id="hp-funding-tab-5">
-                        
-                        <a href="article.html" class="article-item">
-
-                            <div class="columns">
-
-                                <div class="column is-4">
-
-                                    <img class="visual" src="imagEs/thestandingdesk-qFyUmsp2YTc-unsplash.jpg" alt="" />
-
-                                </div>
-
-                                <div class="column is-8">
-
-                                    <h2 class="item-title">
-                                        The most common mistakes when working remote and how to avoid them
-                                    </h2>
-                                    
-                                    <p class="tag-item">
-                                        working, wellbeing, co-working
-                                    </p>
-                                    
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta nibh vel magna ornare malesuada. Donec eleifend nunc id orci porttitor, a condimentum purus ultricies.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                    </div>
 
                 </div>
 
             </div>
-
-            <div class="pagination">
+            <!--<div class="pagination">
                 <a class="pagination-item active" href="#">1</a>
                 <a class="pagination-item" href="#">2</a>
                 <a class="pagination-item" href="#">3</a>
@@ -636,6 +190,7 @@
                 <a class="pagination-item" href="#">5</a>
                 <a class="pagination-item" href="#">Next</a>
             </div>
+            -->
 
 
 @stop

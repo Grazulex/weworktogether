@@ -23,3 +23,4 @@ Route::get('/', function () {
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contact', ContactController::class)->name('contact');
 Route::get('/blogs', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'blog'])->name('blog_show');
