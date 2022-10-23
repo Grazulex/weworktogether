@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.blog')
 
 @section('content')
 <div class="columns is-variable is-8-desktop">

@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.article')
 
 @section('content')
 <div class="columns">
