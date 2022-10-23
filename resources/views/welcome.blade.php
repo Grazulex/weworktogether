@@ -80,7 +80,7 @@
     <div class="columns insights-guidelines">
         <div class="column is-4">
             <a href="{{ route('blog_show', $lastestBlogs[0]->slug ) }}">
-                <img class="visual" src="images/yasmina-h-p8DjPfqEhW0-unsplash.jpg" alt="{{ $lastestBlogs[0]->title }}" />
+                <img class="visual" src="{{ Storage::url($lastestBlogs[0]->image)}}" alt="{{ $lastestBlogs[0]->title }}" />
                 <p class="tag-item">
                     @foreach ($lastestBlogs[0]->tags as $tag)
                         {{ $tag }}
@@ -99,7 +99,7 @@
         </div>
         <div class="column is-4">
             <a href="{{ route('blog_show', $lastestBlogs[1]->slug ) }}">
-                <img class="visual" src="images/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg" alt="{{ $lastestBlogs[1]->title }}" />
+                <img class="visual" src="{{ Storage::url($lastestBlogs[1]->image)}}" alt="{{ $lastestBlogs[1]->title }}" />
                 <p class="tag-item">
                     @foreach ($lastestBlogs[1]->tags as $tag)
                         {{ $tag }}
@@ -118,7 +118,7 @@
         </div>
         <div class="column is-4">
             <a href="{{ route('blog_show', $lastestBlogs[2]->slug ) }}">
-                <img class="visual" src="images/michael-soledad-NrR6ByFMBas-unsplash.jpg" alt="{{ $lastestBlogs[2]->title }}" />
+                <img class="visual" src="{{ Storage::url($lastestBlogs[2]->image)}}" alt="{{ $lastestBlogs[2]->title }}" />
                 <p class="tag-item">
                     @foreach ($lastestBlogs[2]->tags as $tag)
                         {{ $tag }}
