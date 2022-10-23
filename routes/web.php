@@ -22,4 +22,4 @@ Route::get('/', function () {
 
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contact', ContactController::class)->name('contact');
-Route::get('/blog', BlogController::class)->name('blog');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blog');

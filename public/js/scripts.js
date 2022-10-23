@@ -7,5 +7,14 @@ $(document).ready(function() {
     $('.header .icon-close').click(function(){
         $('body').removeClass('header-submenu-nav-opened');
     });
+
+    // Blog tabs
+    $(".blog-tabs .tab-link:first-child").addClass('active');
+    $(".blog-tabs .tab-content-item:first-child").addClass('active');
+    $('.blog-tabs .tab-link').click( function() {
+        var tabID = $(this).attr('data-tab');
+        $(this).addClass('active').siblings().removeClass('active');
+        $('#'+tabID).addClass('active').siblings().removeClass('active');
+    });
     
 });

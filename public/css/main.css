@@ -2077,6 +2077,15 @@ h1 {
   line-height: 21px;
   color: #6B7280; }
 
+.page-bg-white .header .link-item .link {
+  color: #000; }
+
+.page-bg-white .header .btn-orange {
+  color: #000; }
+
+.page-bg-white .header .headline {
+  color: #000; }
+
 .header {
   display: flex;
   align-items: center;
@@ -2225,7 +2234,8 @@ h1 {
       font-size: 14px;
       line-height: 21px;
       color: #fff;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: all .2s ease; }
       .nav-footer .footer-newsletter button:hover {
         background: #d2870a; }
   .nav-footer .newsletter-status {
@@ -2284,26 +2294,6 @@ h1 {
       margin-bottom: 15px; }
     .homepage .fight-isolation .btn {
       margin-top: 30px; }
-  .homepage .insights-guidelines .visual {
-    height: 260px;
-    border-radius: 10px;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    margin-bottom: 10px; }
-  .homepage .insights-guidelines .tag-item {
-    font-size: 14px;
-    line-height: 18px;
-    color: #F59E0B;
-    margin-bottom: 10px; }
-  .homepage .insights-guidelines .item-title {
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 24px;
-    color: #000000;
-    margin-bottom: 10px; }
-  .homepage .insights-guidelines .text {
-    margin-bottom: 0; }
   @media screen and (max-width: 991px) {
     .homepage .footer-col-links > .columns {
       width: 100%; } }
@@ -2311,3 +2301,325 @@ h1 {
     font-size: 14px;
     margin-top: 20px;
     margin-bottom: 0; }
+
+.insights-guidelines .visual {
+  height: 260px;
+  border-radius: 10px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px; }
+
+.insights-guidelines .tag-item {
+  font-size: 14px;
+  line-height: 18px;
+  color: #F59E0B;
+  margin-bottom: 10px; }
+
+.insights-guidelines .item-title {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 10px; }
+
+.insights-guidelines .text {
+  margin-bottom: 0; }
+
+.article-item {
+  margin-bottom: 25px;
+  display: block; }
+  .article-item:last-child {
+    margin-bottom: 0; }
+  .article-item .visual {
+    height: 180px;
+    border-radius: 10px;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-bottom: 10px; }
+    @media screen and (max-width: 991px) {
+      .article-item .visual {
+        height: 240px; } }
+  .article-item .tag-item {
+    font-size: 14px;
+    line-height: 18px;
+    color: #F59E0B;
+    margin-bottom: 10px; }
+  .article-item .item-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 10px; }
+  .article-item .text {
+    margin-bottom: 0;
+    font-size: 14px; }
+
+.article-featured {
+  position: relative; }
+  .article-featured:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    margin-top: 15px;
+    border-right: 1px solid #eee; }
+    @media screen and (max-width: 991px) {
+      .article-featured:before {
+        content: none; } }
+  .article-featured .item-title {
+    font-size: 28px;
+    line-height: 38px; }
+    @media screen and (max-width: 991px) {
+      .article-featured .item-title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 20px; } }
+  .article-featured .text {
+    font-size: 16px;
+    line-height: 24px; }
+    @media screen and (max-width: 991px) {
+      .article-featured .text {
+        font-size: 14px; } }
+  .article-featured .visual {
+    height: 450px; }
+    @media screen and (max-width: 991px) {
+      .article-featured .visual {
+        height: 240px; } }
+
+.page-blog .signup {
+  background: #EBEBEB;
+  border-radius: 15px;
+  margin-top: 100px; }
+  @media screen and (max-width: 991px) {
+    .page-blog .signup {
+      margin-top: 50px; } }
+  .page-blog .signup .col-infos {
+    padding: 60px; }
+    @media screen and (max-width: 991px) {
+      .page-blog .signup .col-infos {
+        padding: 30px 40px; } }
+
+.page-blog .signup-title {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 700;
+  margin-bottom: 25px; }
+  @media screen and (max-width: 991px) {
+    .page-blog .signup-title {
+      font-size: 18px;
+      line-height: 20px; } }
+
+.page-blog .signup-newsletter {
+  display: flex;
+  margin-top: 5px; }
+  .page-blog .signup-newsletter input[type="text"] {
+    background: #FFFFFF;
+    border: 1px solid #F59E0B;
+    border-radius: 7px 0px 0px 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #6B7280;
+    padding: 10px;
+    width: 250px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none; }
+    @media screen and (max-width: 991px) {
+      .page-blog .signup-newsletter input[type="text"] {
+        width: auto;
+        height: 42px; } }
+  .page-blog .signup-newsletter button {
+    background: #F59E0B;
+    border-radius: 0px 7px 7px 0px;
+    width: 125px;
+    border: 0;
+    box-shadow: none;
+    height: 42px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s ease; }
+    .page-blog .signup-newsletter button:hover {
+      background: #d2870a; }
+
+.page-blog .signup-newsletter-status {
+  font-size: 15px;
+  margin: 5px 0 0;
+  color: green; }
+  .page-blog .signup-newsletter-status.error {
+    color: red; }
+
+.page-blog .signup-bg {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: url("../images/bg-signup-blog.png") center center no-repeat;
+  background-size: cover; }
+  @media screen and (max-width: 991px) {
+    .page-blog .signup-bg {
+      display: none; } }
+
+.page-blog .blog-tabs {
+  margin-top: 80px; }
+  @media screen and (max-width: 991px) {
+    .page-blog .blog-tabs {
+      margin-top: 60px; } }
+  .page-blog .blog-tabs .tab-list {
+    display: block;
+    margin-bottom: 50px; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .tab-list {
+        margin-bottom: 30px; } }
+  .page-blog .blog-tabs .tab-link {
+    background: #EBEBEB;
+    color: #B6B6B6;
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin-right: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all .2s ease; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .tab-link {
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        font-size: 14px;
+        display: inline-block; } }
+    .page-blog .blog-tabs .tab-link.active, .page-blog .blog-tabs .tab-link:hover {
+      background: #F69D0C;
+      color: #000; }
+  .page-blog .blog-tabs .tab-content-item {
+    display: none; }
+    .page-blog .blog-tabs .tab-content-item.active {
+      display: block; }
+  .page-blog .blog-tabs .article-item .visual {
+    height: 200px;
+    margin-bottom: 0; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .article-item .visual {
+        height: 240px;
+        margin-bottom: -15px; } }
+  .page-blog .blog-tabs .article-item .item-title {
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 5px; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .article-item .item-title {
+        font-size: 18px;
+        line-height: 20px; } }
+  .page-blog .blog-tabs .article-item .text {
+    font-size: 16px;
+    line-height: 24px; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .article-item .text {
+        font-size: 14px;
+        line-height: 21px; } }
+  .page-blog .blog-tabs .article-item .tag-item {
+    color: #b6bdca;
+    margin-bottom: 25px; }
+    @media screen and (max-width: 991px) {
+      .page-blog .blog-tabs .article-item .tag-item {
+        margin-bottom: 15px; } }
+
+.page-blog .pagination {
+  margin-top: 40px; }
+  .page-blog .pagination .pagination-item {
+    margin-right: 7px;
+    color: #b6bdca;
+    font-weight: bold;
+    font-size: 22px; }
+    .page-blog .pagination .pagination-item.active {
+      color: #F59E0B; }
+
+.page-article .current-article {
+  font-size: 16px;
+  line-height: 28px;
+  color: #6B7280; }
+  .page-article .current-article ul {
+    list-style-type: disc;
+    margin-left: 15px;
+    margin-bottom: 15px; }
+  .page-article .current-article .visual {
+    height: 450px; }
+    @media screen and (max-width: 991px) {
+      .page-article .current-article .visual {
+        height: 240px; } }
+  .page-article .current-article .item-title {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 15px;
+    color: #000; }
+  .page-article .current-article h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    color: #000; }
+  .page-article .current-article h3 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    color: #000; }
+  .page-article .current-article h4 {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+    color: #000;
+    margin-top: 15px; }
+
+.page-article .read-next {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: -25px; }
+  .page-article .read-next:before {
+    content: "";
+    border-top: 1px solid #eee;
+    width: calc(100% - 30px);
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 15px; }
+
+.page-article .share-post {
+  position: fixed;
+  left: 10px;
+  top: 125px; }
+  @media screen and (max-width: 1430px) {
+    .page-article .share-post {
+      position: static;
+      left: 0;
+      top: 0;
+      display: flex; } }
+  .page-article .share-post .social-link {
+    background: #F9F9F9;
+    border: 1px solid #E0E0E0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; }
+    @media screen and (max-width: 1430px) {
+      .page-article .share-post .social-link {
+        margin-bottom: 0;
+        margin-top: 5px;
+        margin-right: 10px;
+        height: 30px;
+        width: 30px; } }
+    .page-article .share-post .social-link:hover {
+      background: #E0E0E0; }
+  .page-article .share-post .social-icon {
+    height: 20px;
+    display: block; }
+    @media screen and (max-width: 1430px) {
+      .page-article .share-post .social-icon {
+        height: 15px; } }

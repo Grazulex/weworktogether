@@ -36,6 +36,8 @@ class BlogResource extends Resource
                     ->fileAttachmentsDisk('local')
                     ->fileAttachmentsDirectory('attachments')
                     ->maxLength(65535),
+                Forms\Components\Textarea::make('resume')
+                    ->required(),
                 Forms\Components\TextInput::make('slug')
                     ->afterStateUpdated(function (Closure $set) {
                         $set('is_slug_changed_manually', true);
@@ -45,6 +47,16 @@ class BlogResource extends Resource
                 Forms\Components\Hidden::make('is_slug_changed_manually')
                     ->default(false)
                     ->dehydrated(false),
+                Forms\Components\FileUpload::make('image')->image(),
+                Forms\Components\TagsInput::make('tags')
+                    ->required()
+                    ->placeholder('Add a tag')
+                    ->suggestions([
+                        'Co-working',
+                        'Wellbeing',
+                        'Professional development',
+                        'Office design'
+                    ]),
             ]);
     }
 

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title')->unique();
             $table->text('content');
+            $table->text('resume');
+            $table->string('image');
+            $table->json('tags');
             $table->string('slug')->unique();
         });
     }

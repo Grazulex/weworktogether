@@ -12,6 +12,13 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'content',
+        'resume',
+        'tags',
+        'image',
         'slug',
+    ];
+
+    protected $casts = [
+        'tags' => 'array',
     ];
 }

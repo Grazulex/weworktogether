@@ -1,43 +1,40 @@
 <!doctype html>
 <html lang="fr">
-
-<head>
+    <head >
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <title>We Share Our Workspace</title>
-    <meta name="title" content="We Share Our Workspace">
-    <meta name="description" content="">
+        <title>We Share Our Workspace</title>
+        <meta name="title" content="We Share Our Workspace">
+        <meta name="description" content="">
 
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div class="page-wrapper homepage">
+    <div class="page-wrapper page-blog page-bg-white">
 
         <div class="page-container-large">
-
+        
             <header class="header">
 
                 <a href="{{ route('home') }}" class="headline">We Share Our Workspace</a>
 
                 <div class="is-hidden-desktop">
 
-                    <img class="icon-nav" src="images/icon-nav.svg" alt="Ouvrir" />
+                    <img class="icon-nav" src="images/icon-nav-black.svg" alt="Ouvrir" />
 
                 </div>
 
@@ -62,11 +59,7 @@
         </div>
 
         <div class="page-container">
-
-            <div class="container">
                 @yield('content')
-            </div>
-
         </div>
 
         <footer class="nav-footer">
@@ -74,9 +67,9 @@
             <div class="page-container">
 
                 <div class="columns is-desktop">
-
+                    
                     <div class="column is-narrow">
-
+                        
                         <a href="{{ route('home') }}" class="headline">We Share Our Workspace</a>
 
                         <div class="social-list">
@@ -91,9 +84,9 @@
                     </div>
 
                     <div class="column is-paddingless is-flex is-justify-content-center footer-col-links">
-
+                        
                         <div class="columns">
-
+                            
                             <div class="column">
                                 <p class="footer-title">Information</p>
                                 <a href="{{ route('contact') }}" class="footer-link">Contact Us</a>
@@ -117,17 +110,15 @@
                                 <p class="footer-title">News</p>
                                 <a href="coworking.html" class="footer-link">Coworking</a>
                                 <a href="wellbeing.html" class="footer-link">Wellbeing</a>
-                                <a href="professional-development.html" class="footer-link">Professional
-                                    Development</a>
+                                <a href="professional-development.html" class="footer-link">Professional Development</a>
                             </div>
 
                         </div>
 
                     </div>
 
-                    <div
-                        class="column is-narrow is-flex is-justify-content-flex-start is-flex-direction-column is-align-items-flex-start">
-
+                    <div class="column is-narrow is-flex is-justify-content-flex-start is-flex-direction-column is-align-items-flex-start">
+                        
                         <p class="footer-title">Subscribe to our newsletter</p>
 
                         <form action="" class="footer-newsletter">
@@ -143,7 +134,7 @@
                 </div>
 
                 <p class="text copyright">
-                    © 2022 We Share Our Workspace powerd by JNKConsult BV. All Rights Reserved.
+                    © 2022 We Share Our Workspace. All Rights Reserved.
                 </p>
 
             </div>
@@ -152,6 +143,6 @@
 
     </div>
 
-</body>
+    </body>
 
 </html>

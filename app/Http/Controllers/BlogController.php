@@ -3,20 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function index()
     {
-        $blog = Blog::find(1)->first();
+        $blogs = Blog::orderBy('created_at', 'desc')->get();
 
-        return view('pages.blog', compact('blog'));
+        return view('pages.blogs', compact('blogs'));
     }
 }
