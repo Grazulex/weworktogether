@@ -55,7 +55,7 @@ class BlogResource extends Resource
                         'Co-working',
                         'Wellbeing',
                         'Professional development',
-                        'Office design'
+                        'Office design',
                     ]),
             ]);
     }

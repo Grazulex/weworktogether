@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.36.4.
+ * Generated for Laravel 9.37.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -17113,6 +17113,17 @@
      */ 
         class Vite {
                     /**
+         * Get the preloaded assets.
+         *
+         * @var array
+         * @static 
+         */ 
+        public static function preloadedAssets()
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->preloadedAssets();
+        }
+                    /**
          * Get the Content Security Policy nonce applied to all generated tags.
          *
          * @return string|null 
@@ -17217,6 +17228,18 @@
         {
                         /** @var \Illuminate\Foundation\Vite $instance */
                         return $instance->useStyleTagAttributes($attributes);
+        }
+                    /**
+         * Use the given callback to resolve attributes for preload tags.
+         *
+         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function usePreloadTagAttributes($attributes)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->usePreloadTagAttributes($attributes);
         }
                     /**
          * Generate React refresh runtime script.
@@ -19059,50 +19082,54 @@
                     /**
          * 
          *
-         * @see \Filament\Testing\TestsPages::fillForm()
+         * @see \Filament\Forms\Testing\TestsForms::fillForm()
          * @param array $state
+         * @param string $formName
          * @return static 
          * @static 
          */ 
-        public static function fillForm($state = [])
+        public static function fillForm($state = [], $formName = 'form')
         {
-                        return \Livewire\Testing\TestableLivewire::fillForm($state);
+                        return \Livewire\Testing\TestableLivewire::fillForm($state, $formName);
         }
                     /**
          * 
          *
-         * @see \Filament\Testing\TestsPages::assertFormSet()
+         * @see \Filament\Forms\Testing\TestsForms::assertFormSet()
          * @param array $state
+         * @param string $formName
          * @return static 
          * @static 
          */ 
-        public static function assertFormSet($state)
+        public static function assertFormSet($state, $formName = 'form')
         {
-                        return \Livewire\Testing\TestableLivewire::assertFormSet($state);
+                        return \Livewire\Testing\TestableLivewire::assertFormSet($state, $formName);
         }
                     /**
          * 
          *
-         * @see \Filament\Testing\TestsPages::assertHasFormErrors()
+         * @see \Filament\Forms\Testing\TestsForms::assertHasFormErrors()
          * @param array $keys
+         * @param string $formName
          * @return static 
          * @static 
          */ 
-        public static function assertHasFormErrors($keys = [])
+        public static function assertHasFormErrors($keys = [], $formName = 'form')
         {
-                        return \Livewire\Testing\TestableLivewire::assertHasFormErrors($keys);
+                        return \Livewire\Testing\TestableLivewire::assertHasFormErrors($keys, $formName);
         }
                     /**
          * 
          *
-         * @see \Filament\Testing\TestsPages::assertHasNoFormErrors()
+         * @see \Filament\Forms\Testing\TestsForms::assertHasNoFormErrors()
          * @param array $keys
+         * @param string $formName
          * @return static 
          * @static 
          */ 
-        public static function assertHasNoFormErrors($keys = [])
+        public static function assertHasNoFormErrors($keys = [], $formName = 'form')
         {
-                        return \Livewire\Testing\TestableLivewire::assertHasNoFormErrors($keys);
+                        return \Livewire\Testing\TestableLivewire::assertHasNoFormErrors($keys, $formName);
         }
                     /**
          * 
@@ -21845,7 +21872,7 @@ namespace  {
                 /**
              * Set the table which the query is targeting.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $table
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $table
              * @param string|null $as
              * @return \Illuminate\Database\Query\Builder 
              * @static 
