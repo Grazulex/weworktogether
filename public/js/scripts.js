@@ -16,5 +16,26 @@ $(document).ready(function() {
         $(this).addClass('active').siblings().removeClass('active');
         $('#'+tabID).addClass('active').siblings().removeClass('active');
     });
+
+    // About - FAQ Accordion
+    $('.faq-header').click(function(e) {
+        e.preventDefault();
+        
+        let $this = $(this);
+        
+        if ($this.next().hasClass('show')) {
+            $this.next().removeClass('show');
+            $this.parent().removeClass('open');
+            $this.addClass('close');
+            $this.next().slideUp(350);
+        } else {
+            $this.parent().addClass('open');
+            $this.removeClass('close');
+            // $this.parent().parent().find('.around-content').removeClass('show');
+            // $this.parent().parent().find('.around-content').slideUp(350);
+            $this.next().toggleClass('show');
+            $this.next().slideToggle(350);
+        }
+    });
     
 });

@@ -24,7 +24,7 @@
 
     <body>
 
-    <div class="page-wrapper page-blog page-bg-white">
+    <div class="page-wrapper page-about page-contact page-bg-white"">
 
         <div class="page-container-large">
         
@@ -58,9 +58,7 @@
 
         </div>
 
-        <div class="page-container">
-                @yield('content')
-        </div>
+        @yield('content')
 
         <footer class="nav-footer">
 

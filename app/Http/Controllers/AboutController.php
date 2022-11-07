@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -14,6 +15,8 @@ class AboutController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('pages.about');
+        $lastestBlogs = Blog::latest()->take(3)->get();
+
+        return view('pages.about', compact('lastestBlogs'));
     }
 }

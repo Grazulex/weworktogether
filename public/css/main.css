@@ -2021,7 +2021,7 @@ h1 {
       line-height: 34px;
       margin-bottom: 30px; } }
   .h2-title.is-light {
-    margin-bottom: 5px; }
+    margin-bottom: 5px !important; }
 
 .link-arrow {
   font-weight: 400;
@@ -2079,6 +2079,9 @@ h1 {
 
 .page-bg-white .header .link-item .link {
   color: #000; }
+  .page-bg-white .header .link-item .link:hover {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #000; }
 
 .page-bg-white .header .btn-orange {
   color: #000; }
@@ -2174,6 +2177,9 @@ h1 {
   @media screen and (max-width: 991px) {
     .nav-footer {
       padding-top: 20px; } }
+  @media screen and (max-width: 991px) {
+    .nav-footer .footer-col-links > .columns {
+      width: 100%; } }
   .nav-footer .headline {
     font-weight: 700;
     font-size: 20px;
@@ -2294,9 +2300,6 @@ h1 {
       margin-bottom: 15px; }
     .homepage .fight-isolation .btn {
       margin-top: 30px; }
-  @media screen and (max-width: 991px) {
-    .homepage .footer-col-links > .columns {
-      width: 100%; } }
   .homepage .copyright {
     font-size: 14px;
     margin-top: 20px;
@@ -2623,3 +2626,255 @@ h1 {
     @media screen and (max-width: 1430px) {
       .page-article .share-post .social-icon {
         height: 15px; } }
+
+.page-about .h2-title {
+  font-weight: 700;
+  color: #000;
+  font-size: 30px;
+  line-height: 52px;
+  margin-bottom: 40px; }
+  @media screen and (max-width: 991px) {
+    .page-about .h2-title {
+      font-size: 20px;
+      line-height: 34px;
+      margin-bottom: 30px; } }
+
+.page-about .text-intro {
+  font-size: 20px;
+  line-height: 28px;
+  color: #6B7280;
+  margin: 0; }
+  @media screen and (max-width: 991px) {
+    .page-about .text-intro {
+      font-size: 16px;
+      line-height: 22px; } }
+
+.page-about .text {
+  font-size: 18px;
+  line-height: 24px;
+  color: #6B7280;
+  margin: 0; }
+
+.page-about .about-visual-intro {
+  height: 250px;
+  display: block;
+  margin-left: auto; }
+  @media screen and (max-width: 991px) {
+    .page-about .about-visual-intro {
+      margin-left: 0; } }
+
+.page-about .how-it-started {
+  margin-top: 40px;
+  padding: 70px 0;
+  background: #F9F9F9;
+  margin-bottom: 130px; }
+  @media screen and (max-width: 991px) {
+    .page-about .how-it-started {
+      padding: 40px 0;
+      margin-bottom: 100px; } }
+
+.page-about .text-started {
+  margin: 0 100px; }
+  @media screen and (max-width: 991px) {
+    .page-about .text-started {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px; } }
+
+.page-about .about-visual-started {
+  margin-top: 50px;
+  margin-bottom: -130px; }
+  @media screen and (max-width: 991px) {
+    .page-about .about-visual-started {
+      margin-top: 40px;
+      margin-bottom: -80px; } }
+
+.page-about .faq {
+  margin-bottom: 80px; }
+  @media screen and (max-width: 991px) {
+    .page-about .faq {
+      margin-bottom: 60px; } }
+
+.page-about .faq-item {
+  padding: 25px 30px;
+  margin-bottom: 15px;
+  box-shadow: 3px 3px 5px #eeeeeebd;
+  border-radius: 5px;
+  border: 1px solid #eeeeee4d; }
+  @media screen and (max-width: 991px) {
+    .page-about .faq-item {
+      padding: 15px 20px; } }
+  .page-about .faq-item.open {
+    background: #F9F9F9; }
+    .page-about .faq-item.open .icon-plus {
+      display: none; }
+    .page-about .faq-item.open .icon-less {
+      display: block; }
+
+.page-about .faq-header {
+  font-weight: bold;
+  color: #000;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  @media screen and (max-width: 991px) {
+    .page-about .faq-header {
+      font-size: 16px; } }
+  .page-about .faq-header p {
+    margin: 0; }
+    .page-about .faq-header p:last-child {
+      margin-bottom: 0; }
+  .page-about .faq-header .icon-arrow {
+    margin-right: 12px;
+    height: 14px;
+    transition: all .2s ease; }
+  .page-about .faq-header .icon-less {
+    display: none; }
+
+.page-about .faq-content {
+  display: none;
+  color: #6B7280;
+  font-size: 16px;
+  margin-top: 15px; }
+  @media screen and (max-width: 991px) {
+    .page-about .faq-content {
+      font-size: 14px; } }
+  .page-about .faq-content p {
+    margin: 0;
+    line-height: 24px; }
+    @media screen and (max-width: 991px) {
+      .page-about .faq-content p {
+        line-height: 20px; } }
+    .page-about .faq-content p:last-child {
+      margin-bottom: 0; }
+  .page-about .faq-content a {
+    color: #F59E0B;
+    text-decoration: underline; }
+
+.page-about .h3-title {
+  font-weight: bold;
+  color: #000;
+  font-size: 18px;
+  margin-bottom: 10px; }
+
+.page-about .question {
+  color: #6B7280;
+  font-size: 16px;
+  margin-bottom: 80px; }
+  @media screen and (max-width: 991px) {
+    .page-about .question {
+      margin-bottom: 60px; } }
+  .page-about .question a {
+    color: #F59E0B;
+    text-decoration: underline; }
+
+.page-contact {
+  background: url("../images/bg-contact.png") right top no-repeat;
+  background-size: auto 1200px; }
+  @media screen and (max-width: 1199px) {
+    .page-contact {
+      background: none; } }
+  .page-contact .header .headline {
+    color: #000; }
+  .page-contact .header .link-item .link {
+    color: #000; }
+    .page-contact .header .link-item .link:hover {
+      padding-bottom: 2px;
+      border-bottom: 2px solid #000; }
+  .page-contact .h1-title {
+    margin-top: 170px;
+    font-weight: 700;
+    color: #000;
+    font-size: 30px;
+    line-height: 52px;
+    margin-bottom: 10px; }
+    @media screen and (max-width: 991px) {
+      .page-contact .h1-title {
+        font-size: 20px;
+        line-height: 34px;
+        margin-bottom: 30px;
+        margin-top: 0; } }
+  .page-contact .intro {
+    font-size: 20px;
+    line-height: 28px;
+    color: #6B7280;
+    width: 600px; }
+    @media screen and (max-width: 991px) {
+      .page-contact .intro {
+        font-size: 16px;
+        line-height: 22px;
+        width: 100%; } }
+  .page-contact .page-height {
+    min-height: 868px; }
+    @media screen and (max-width: 991px) {
+      .page-contact .page-height {
+        min-height: 0; } }
+  .page-contact form {
+    width: 400px; }
+    @media screen and (max-width: 991px) {
+      .page-contact form {
+        width: 100%; } }
+    .page-contact form .form-row {
+      display: flex; }
+      @media screen and (max-width: 991px) {
+        .page-contact form .form-row {
+          display: block; } }
+      .page-contact form .form-row .form-line {
+        width: 190px;
+        margin-right: 20px; }
+        @media screen and (max-width: 991px) {
+          .page-contact form .form-row .form-line {
+            width: 100%;
+            margin: 0; } }
+        .page-contact form .form-row .form-line:last-child {
+          margin-right: 0; }
+    .page-contact form .form-line {
+      padding-top: 30px;
+      padding-bottom: 10px; }
+    .page-contact form label {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block; }
+    .page-contact form .mandatory {
+      color: red; }
+    .page-contact form input[type="text"], .page-contact form textarea {
+      font-family: 'DM Sans', sans-serif;
+      display: block;
+      border: 0;
+      border-bottom: 1px solid #eee;
+      padding: 5px 0;
+      font-size: 15px;
+      color: #6B7280;
+      width: 100%; }
+      .page-contact form input[type="text"]::-moz-placeholder, .page-contact form textarea::-moz-placeholder {
+        font-size: 15px;
+        color: #6B7280; }
+      .page-contact form input[type="text"]:-ms-input-placeholder, .page-contact form textarea:-ms-input-placeholder {
+        font-size: 15px;
+        color: #6B7280; }
+      .page-contact form input[type="text"]::placeholder, .page-contact form textarea::placeholder {
+        font-size: 15px;
+        color: #6B7280; }
+    .page-contact form textarea {
+      min-height: 100px; }
+    .page-contact form .send {
+      margin-top: 30px;
+      margin-bottom: 60px;
+      cursor: pointer;
+      border: 0;
+      color: #000;
+      box-shadow: none;
+      min-width: 110px; }
+    .page-contact form .form-return {
+      border-radius: 3px;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: -50px;
+      margin-bottom: 30px; }
+      .page-contact form .form-return.form-error {
+        background: red; }
+      .page-contact form .form-return.form-success {
+        background: green; }
