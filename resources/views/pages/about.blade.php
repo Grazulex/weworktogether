@@ -45,9 +45,9 @@
 
         <div class="page-container">
 
-            <div class="faq">
+            <div class="cookie">
                 
-                <h2 class="h2-title" id="faq">Frequently Asked Questions</h2>
+                <h2 class="h2-title">Interpretation and Definitions</h2>
 
                 <div class="faq-list">
                     

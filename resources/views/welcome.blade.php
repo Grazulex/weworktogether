@@ -71,7 +71,7 @@
             </p>
         </div>
         <div class="column is-paddingless has-text-right">
-            <a href="blog.html" class="link-arrow">
+            <a href="{{ route('blog') }}?type=all" class="link-arrow">
                 Read all our blogs
             </a>
         </div>

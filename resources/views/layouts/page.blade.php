@@ -24,7 +24,7 @@
 
     <body>
 
-    <div class="page-wrapper @if (request()->is('about'))page-about @endif @if (request()->is('contact'))page-contact @endif page-bg-white"">
+    <div class="page-wrapper @if (request()->is('policy'))page-others @endif @if (request()->is('term'))page-others @endif @if (request()->is('cookie'))page-others @endif @if (request()->is('about'))page-about @endif @if (request()->is('contact'))page-contact @endif page-bg-white"">
 
         <div class="page-container-large">
         
@@ -96,10 +96,10 @@
 
                             <div class="column">
                                 <p class="footer-title">General</p>
-                                <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-                                <a href="cookie-policy.html" class="footer-link">Cookie Policy</a>
-                                <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
-                                <a href="sitemap.html" class="footer-link">Sitemap</a>
+                                <a href="{{ route('policy') }}" class="footer-link">Privacy Policy</a>
+                                <a href="{{ route('cookie') }}" class="footer-link">Cookie Policy</a>
+                                <a href="{{ route('term') }}" class="footer-link">Terms & Conditions</a>
+                                <a href="/sitemap.xml" class="footer-link">Sitemap</a>
                             </div>
 
                             <div class="column is-narrow is-hidden-mobile"></div>
