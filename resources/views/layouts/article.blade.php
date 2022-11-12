@@ -47,7 +47,7 @@
                         <a href="{{ route('contact') }}" class="link">Contact us</a>
                     </li>
                     <li class="link-item">
-                        <a href="{{ route('blog') }}" class="link">Blog</a>
+                        <a href="{{ route('blog') }}?type=all" class="link">Blog</a>
                     </li>
                     <li class="link-item">
                         <a href="{{ route('filament.pages.dashboard') }}" class="btn btn-orange">Log In</a>
@@ -76,7 +76,7 @@
                             <a class="social-link" href="#" target="_blank">
                                 <img class="social-icon" src="images/facebook.svg" alt="" />
                             </a>
-                            <a class="social-link" href="#" target="_blank">
+                            <a class="social-link" href="https://www.linkedin.com/company/we-share-our-workspace/" target="_blank">
                                 <img class="social-icon" src="images/linkedin.svg" alt="" />
                             </a>
                         </div>
@@ -91,7 +91,7 @@
                                 <p class="footer-title">Information</p>
                                 <a href="{{ route('contact') }}" class="footer-link">Contact Us</a>
                                 <a href="{{ route('about') }}" class="footer-link">About Us</a>
-                                <a href="faq.html" class="footer-link">FAQs</a>
+                                <a href="{{ route('about') }}#faq" class="footer-link">FAQs</a>
                             </div>
 
                             <div class="column is-narrow is-hidden-mobile"></div>
@@ -108,9 +108,11 @@
 
                             <div class="column">
                                 <p class="footer-title">News</p>
-                                <a href="coworking.html" class="footer-link">Coworking</a>
-                                <a href="wellbeing.html" class="footer-link">Wellbeing</a>
-                                <a href="professional-development.html" class="footer-link">Professional Development</a>
+                                <a href="{{ route('blog') }}?type=co-working#tags" class="footer-link">Coworking</a>
+                                <a href="{{ route('blog') }}?type=wellbeing#tags" class="footer-link">Wellbeing</a>
+                                <a href="{{ route('blog') }}?type=professional-development#tags" class="footer-link">Professional
+                                    Development</a>
+                                <a href="{{ route('blog') }}?type=office-design#tags" class="footer-link">Office Design</a>
                             </div>
 
                         </div>

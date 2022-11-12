@@ -96,17 +96,16 @@
 
             </div>
 
-            <div class="blog-tabs">
-                
+            <div class="blog-tabs"id="tags">
                 <div class="tab-list">
-                    <span class="tab-link" data-tab="hp-funding-tab-1">All blogs</span>
+                    <span class="tab-link @if (Request::get('type') ===  'all')active @endif" data-tab="hp-funding-tab-1">All blogs</span>
                         @foreach ($tags as $tag)
-                            <span class="tab-link" data-tab="hp-funding-tab-{{ strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag))) }}">{{ $tag }}</span>
+                            <span class="tab-link @if (Request::get('type') ===  strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag))))active @endif" data-tab="hp-funding-tab-{{ strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag))) }}">{{ $tag }}</span>
                         @endforeach
                 </div>
 
                 <div class="tab-content-list">
-                    <div class="tab-content-item" id="hp-funding-tab-1">
+                    <div class="tab-content-item @if (Request::get('type') ===  'all')active @endif" id="hp-funding-tab-1">
                         @foreach ($blogs as $blog)
                             <a href="{{ route('blog_show', $blog->slug ) }}" class="article-item">
                                 <div class="columns">
@@ -137,7 +136,7 @@
                     
 
                     @foreach ($blogsByTag as $tag => $blogsTags)
-                    <div class="tab-content-item" id="hp-funding-tab-{{strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag)))}}">
+                    <div class="tab-content-item @if (Request::get('type') ===  strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag))))active @endif" id="hp-funding-tab-{{strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $tag)))}}">
                         @foreach ($blogsTags as $blog)
                             <a href="{{ route('blog_show', $blog->slug ) }}" class="article-item">
 

@@ -12,7 +12,7 @@
             Stop working on your own and start sharing a home office.
         </p>
 
-        <a href="joint-the-movement.html" class="btn btn-orange">Join the movement</a>
+        <a href="{{ route('filament.pages.dashboard') }}" class="btn btn-orange">Join the movement</a>
 
     </div>
 
@@ -56,7 +56,7 @@
                 Discover hundreds of profiles of people who want to turn work into a sociable experience, just
                 like you.
             </p>
-            <a href="find-home-office.html" class="btn btn-orange">Find a home office near me</a>
+            <a href="{{ route('filament.pages.dashboard') }}" class="btn btn-orange">Find a home office near me</a>
         </div>
     </div>
 

@@ -47,7 +47,7 @@
 
             <div class="faq">
                 
-                <h2 class="h2-title">Frequently Asked Questions</h2>
+                <h2 class="h2-title" id="faq">Frequently Asked Questions</h2>
 
                 <div class="faq-list">
                     
@@ -75,10 +75,7 @@
                         </div>
 
                         <div class="faq-content">
-                            <p>Our service is 100% free if you want to share one home office. If you have multiple spaces you want to share,
-                            <a href="#">contact us</a> and we'll give you a quote.</p>
-                            <p>Lorem ipsm free if you want to share one home office. If you have multiple spaces you want to share,
-                             and we'll give you a quote.</p>
+                            <p>After you created an account, you can either create an ad about the space you want to share or search for a place by filling the dedicated form. Our matching system will then suggest spaces and profiles that meet your requirements.</p>
                         </div>
 
                     </div>
@@ -92,7 +89,7 @@
                         </div>
 
                         <div class="faq-content">
-                            <p>If you have multiple spaces you want to share.</p>
+                            <p>Our platform allows you to share one office only for free. If you want to share more than one space, contact us and we’ll give you a quote.</p>
                         </div>
 
                     </div>

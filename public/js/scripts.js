@@ -9,8 +9,8 @@ $(document).ready(function() {
     });
 
     // Blog tabs
-    $(".blog-tabs .tab-link:first-child").addClass('active');
-    $(".blog-tabs .tab-content-item:first-child").addClass('active');
+   // $(".blog-tabs .tab-link:first-child").addClass('active');
+    //$(".blog-tabs .tab-content-item:first-child").addClass('active');
     $('.blog-tabs .tab-link').click( function() {
         var tabID = $(this).attr('data-tab');
         $(this).addClass('active').siblings().removeClass('active');

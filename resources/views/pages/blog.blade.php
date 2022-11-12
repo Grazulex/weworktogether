@@ -25,7 +25,7 @@
                             <a class="social-link" href="#" target="_blank">
                                 <img class="social-icon" src="images/icon-twitter.svg" alt="" />
                             </a>
-                            <a class="social-link" href="#" target="_blank">
+                            <a class="social-link" href="https://www.linkedin.com/company/we-share-our-workspace/" target="_blank">
                                 <img class="social-icon" src="images/icon-linkedin.svg" alt="" />
                             </a>
                             <a class="social-link" href="#" target="_blank">
