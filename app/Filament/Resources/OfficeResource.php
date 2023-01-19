@@ -24,9 +24,25 @@ class OfficeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Yours shares & requests';
+    public static function getModelLabel(): string
+    {
+        return __('filament::resources/pages/office.title');
+    }
 
-    protected static ?string $navigationLabel = 'Yours offices';
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament::resources/pages/office.title_plural');
+    }
+
+    protected static function getNavigationGroup(): string
+    {
+        return __('filament::resources/pages/office.group');
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('filament::resources/pages/office.title');
+    }
 
     protected ?string $maxContentWidth = 'full';
 
@@ -45,12 +61,11 @@ class OfficeResource extends Resource
             ->schema([
                 Wizard::make([
                     Wizard\Step::make('Location')
-                        ->description(
-                            'Information about the location of the office'
-                        )
+                        ->label(__('filament::resources/pages/office.step.location.label'))
+                        ->description(__('filament::resources/pages/office.step.location.description'))
                         ->schema([
-                            Section::make('Your home')
-                                ->description('Information about your home')
+                            Section::make(__('filament::resources/pages/office.section.home.label'))
+                                ->description(__('filament::resources/pages/office.section.home.description'))
                                 ->schema([
                                     Forms\Components\Select::make('user_id')
                                         ->options(
@@ -59,47 +74,41 @@ class OfficeResource extends Resource
                                         ->required()
                                         ->visible(Auth::user()->is_admin),
                                     Forms\Components\TextInput::make('name')
-                                        ->helperText(
-                                            'Give an easy name for everyone ("nice little office", "together one day a week",..)'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.name.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.name.helper'))
                                         ->required()
                                         ->maxLength(255),
                                     Forms\Components\Toggle::make('is_free')
-                                        ->label('Free')
-                                        ->helperText(
-                                            'Do you offer free sharing'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.is_free.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.is_free.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\RichEditor::make(
                                         'description'
                                     )
-                                        ->helperText(
-                                            'Tell other users about your coworking space'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.description.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.description.helper'))
                                         ->disableToolbarButtons([
                                             'attachFiles',
                                             'codeBlock',
                                         ])
                                         ->required(),
                                     Forms\Components\CheckboxList::make('days')
-                                        ->helperText(
-                                            'What days can you invite someone to your home'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.days.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.days.helper'))
                                         ->options([
-                                            'monday' => 'Monday',
-                                            'tuestday' => 'Thuesday',
-                                            'wednesday' => 'Wednesday',
-                                            'thursday' => 'Thursday',
-                                            'friday' => 'Friday',
-                                            'saturday' => 'Saturday',
-                                            'sunday' => 'Sunday',
+                                            'monday' => __('filament::resources/pages/office.form.days.options.monday'),
+                                            'tuesday' => __('filament::resources/pages/office.form.days.options.tuesday'),
+                                            'wednesday' => __('filament::resources/pages/office.form.days.options.wednesday'),
+                                            'thursday' => __('filament::resources/pages/office.form.days.options.thursday'),
+                                            'friday' => __('filament::resources/pages/office.form.days.options.friday'),
+                                            'saturday' => __('filament::resources/pages/office.form.days.options.saturday'),
+                                            'sunday' => __('filament::resources/pages/office.form.days.options.sunday'),
                                         ])
                                         ->required(),
                                     LeafletInput::make('location')
-                                        ->helperText(
-                                            'Insert your address. This one will NOT be displayed'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.location.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.location.helper'))
                                         ->setMapHeight(300)
                                         ->setZoomControl(false)
                                         ->setScrollWheelZoom(false)
@@ -108,17 +117,15 @@ class OfficeResource extends Resource
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make('Workspace')
-                        ->description('What do you offer as a workspace?')
+                    Wizard\Step::make(__('filament::resources/pages/office.step.workspace.label'))
+                        ->description(__('filament::resources/pages/office.step.workspace.description'))
                         ->schema([
-                            Section::make('Your home')
-                                ->description('Information about your home')
+                            Section::make(__('filament::resources/pages/office.section.workspace.label'))
+                                ->description(__('filament::resources/pages/office.section.workspace.description'))
                                 ->schema([
                                     Forms\Components\TextInput::make('places')
-                                        ->label('How many people can you share your office with?')
-                                        ->helperText(
-                                            'How many people are you inviting'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.places.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.places.helper'))
                                         ->numeric()
                                         ->minValue(1)
                                         ->maxValue(5)
@@ -127,166 +134,130 @@ class OfficeResource extends Resource
                                     Forms\Components\Toggle::make(
                                         'have_internet'
                                     )
-                                        ->label('Internet')
-                                        ->helperText(
-                                            'Do you share a WIFI internet connexion'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_internet.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_internet.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make('have_desk')
-                                        ->label('Desk')
-                                        ->helperText(
-                                            'Do you offer a real workdesk (as opposed to a table)'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_desk.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_desk.helper'))
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
                                         'have_printer'
                                     )
-                                        ->label('Printer')
-                                        ->helperText(
-                                            'Do you share your printer'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_printer.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_printer.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
                                         'have_scanner'
                                     )
-                                        ->label('Scanner')
-                                        ->helperText(
-                                            'Do you share your scanner'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_scanner.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_scanner.helper'))
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make('have_fax')
-                                        ->label('Fax')
-                                        ->helperText('Do you share your fax')
+                                        ->label(__('filament::resources/pages/office.form.have_fax.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_fax.helper'))
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
                                         'have_parking'
                                     )
-                                        ->label('Parking')
-                                        ->helperText(
-                                            'Do you have a parking space for your co-workers?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_parking.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_parking.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
                                         'have_meeting_room'
                                     )
-                                        ->label('Meeting Room')
-                                        ->helperText(
-                                            'Do you have a quiet space where your co-workers can isolate themselves for phone calls or meeting?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_meeting_room.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_meeting_room.helper'))
                                         ->required()
                                         ->default(true),
                                     Rating::make('tranquility')
-                                        ->label('Tranquility')
-                                        ->helperText(
-                                            'If you should give a rating out of 5 for the tranquility of the workspace (presence of children, noisy animals, etc.)'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.tranquility.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.tranquility.helper'))
                                         ->min(1)
                                         ->max(5)
                                         ->default(5),
                                     Rating::make('workspace')
-                                        ->label('Workspace size')
-                                        ->helperText(
-                                            'If you should rate your proposed workspace size out of 5'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.workspace_size.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.workspace_size.helper'))
                                         ->min(1)
                                         ->max(5)
                                         ->default(5),
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make('Eat & drink')
-                        ->description(
-                            'Do you offer facilities for eating and drinking?'
-                        )
+                    Wizard\Step::make(__('filament::resources/pages/office.step.eatanddrink.label'))
+                        ->description(__('filament::resources/pages/office.step.eatanddrink.description'))
                         ->schema([
-                            Section::make('Your gift')
-                                ->description(
-                                    'Information about your facilities'
-                                )
+                            Section::make(__('filament::resources/pages/office.section.eatanddrink.label'))
+                                ->description(__('filament::resources/pages/office.section.eatanddrink.description'))
                                 ->schema([
                                     Forms\Components\Toggle::make('give_coffee')
-                                        ->label('Coffee')
-                                        ->helperText(
-                                            'Do you offer to share coffee for free?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.give_coffee.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.give_coffee.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make('give_water')
-                                        ->label('Water')
-                                        ->helperText(
-                                            'Do you offer to share water for free?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.give_water.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.give_water.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make('have_fridge')
-                                        ->label('Fridge')
-                                        ->helperText(
-                                            'Do you have a fridge where your co-workers can store their food and/or drinks?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_fridge.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_fridge.helper'))
                                         ->required()
                                         ->default(true),
                                     Forms\Components\Toggle::make(
                                         'have_microwave'
                                     )
-                                        ->label('Microwave')
-                                        ->helperText(
-                                            'Do you offer to share a microwave for free?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_microwave.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_microwave.helper'))
                                         ->required()
                                         ->default(true),
                                 ])
                                 ->columns(2),
                         ]),
-                    Wizard\Step::make('Relationship')
-                        ->description(
-                            'For a good cohabitation, do you accept any type of person?'
-                        )
+                    Wizard\Step::make(__('filament::resources/pages/office.step.relationship.label'))
+                        ->description(__('filament::resources/pages/office.step.relationship.description'))
                         ->schema([
-                            Section::make('good relationship')
-                                ->description('some important points')
+                            Section::make(__('filament::resources/pages/office.section.relationship.label'))
+                                ->description(__('filament::resources/pages/office.section.relationship.description'))
                                 ->schema([
                                     Forms\Components\Toggle::make('have_garden')
-                                        ->label('Garden')
-                                        ->helperText(
-                                            'Do you offer to share a private garden?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.have_garden.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.have_garden.helper'))
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Toggle::make(
                                         'accept_smoking'
                                     )
-                                        ->label('Smoking')
-                                        ->helperText(
-                                            'Do you accept to share your workspace with smokers?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.accept_smoker.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.accept_smoker.helper'))
                                         ->required()
                                         ->default(false),
                                     Forms\Components\Repeater::make(
                                         'accept_languages'
                                     )
-                                        ->label('Languages')
-                                        ->helperText(
-                                            'What languages do you speak?'
-                                        )
+                                        ->label(__('filament::resources/pages/office.form.accept_languages.label'))
+                                        ->helperText(__('filament::resources/pages/office.form.accept_languages.helper'))
                                         ->required()
                                         ->schema([
                                             Forms\Components\Select::make(
                                                 'Language'
                                             )
                                                 ->options([
-                                                    'FR',
-                                                    'NL',
-                                                    'EN',
-                                                    'DE',
-                                                    'ES',
-                                                    'IT',
-                                                    'Other',
+                                                    __('filament::resources/pages/office.form.accept_languages.options.french'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.dutch'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.english'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.german'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.spanish'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.italian'),
+                                                    __('filament::resources/pages/office.form.accept_languages.options.other'),
                                                 ])
                                                 ->required(),
                                         ]),
@@ -322,9 +293,12 @@ class OfficeResource extends Resource
                 Tables\Columns\TextColumn::make('user.fullname')->visible(
                     Auth::user()->is_admin
                 ),
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('places'),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament::resources/pages/office.table.name.label')),
+                Tables\Columns\TextColumn::make('places')
+                    ->label(__('filament::resources/pages/office.table.places.label')),
                 Tables\Columns\BadgeColumn::make('status')
+                    ->label(__('filament::resources/pages/office.table.status.label'))
                     ->colors([
                         'primary' => StatusEnum::VALIDATION->value,
                         'success' => StatusEnum::OPEN->value,

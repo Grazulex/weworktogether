@@ -21,9 +21,15 @@ class SearchResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Yours shares & requests';
+    protected static function getNavigationGroup(): string
+    {
+      return __('filament::resources/pages/search.group');
+    }
 
-    protected static ?string $navigationLabel = 'Yours requests';
+    protected static function getNavigationLabel(): string
+    {
+      return __('filament::resources/pages/search.title');
+    }
 
     public static function getEloquentQuery(): Builder
     {

@@ -18,6 +18,11 @@ class BlogResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static function getNavigationLabel(): string
+    {
+      return __('filament::resources/pages/blog.side');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
