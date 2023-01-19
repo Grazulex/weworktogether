@@ -11,6 +11,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class OfficeOverview extends BaseWidget
 {
+
+   public static function getModelLabel(): string
+   {
+       return __('filament::resources/pages/search.title');
+   }
+
+   public static function getPluralModelLabel(): string
+   {
+       return __('filament::resources/pages/search.title_plural');
+   }
+   
     protected int | string | array $columnSpan = 'full';
 
     public ?Model $record = null;

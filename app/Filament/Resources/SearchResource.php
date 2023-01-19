@@ -21,14 +21,25 @@ class SearchResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+
+    public static function getModelLabel(): string
+    {
+        return __('filament::resources/pages/search.title');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament::resources/pages/search.title_plural');
+    }
+
     protected static function getNavigationGroup(): string
     {
-      return __('filament::resources/pages/search.group');
+        return __('filament::resources/pages/search.group');
     }
 
     protected static function getNavigationLabel(): string
     {
-      return __('filament::resources/pages/search.title');
+        return __('filament::resources/pages/search.title');
     }
 
     public static function getEloquentQuery(): Builder
@@ -58,25 +69,30 @@ class SearchResource extends Resource
                 ->visible(Auth::user()->is_admin)
                 ->hiddenOn('view'),
             Forms\Components\TextInput::make('name')
+                ->label(__('filament::resources/pages/search.form.name.label'))
                 ->helperText(
-                    'Give an easy name for everyone ("looking for nice college", "why not be together",..)'
+                    __('filament::resources/pages/search.form.name.helper')
                 )
                 ->required()
                 ->maxLength(255),
             Forms\Components\TextInput::make('distance')
+                ->label(__('filament::resources/pages/search.form.distance.label'))
                 ->helperText(
-                    'What is the maximum distance (kilometer) from your home'
+                    __('filament::resources/pages/search.form.distance.helper')
                 )
                 ->required()
                 ->numeric()
                 ->default(20),
             Forms\Components\RichEditor::make('description')
-                ->helperText('Explain in a few lines why this sharing')
+                ->label(__('filament::resources/pages/search.form.description.label'))
+                ->helperText(
+                    __('filament::resources/pages/search.form.description.helper'))
                 ->disableToolbarButtons(['attachFiles', 'codeBlock'])
                 ->required(),
             LeafletInput::make('location')
+                ->label(__('filament::resources/pages/search.form.location.label'))
                 ->helperText(
-                    'Insert your address. This one will NOT be displayed'
+                    __('filament::resources/pages/search.form.location.helper')
                 )
                 ->setMapHeight(300)
                 ->setZoomControl(false)
@@ -93,8 +109,10 @@ class SearchResource extends Resource
                 Tables\Columns\TextColumn::make('user.fullname')->visible(
                     Auth::user()->is_admin
                 ),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament::resources/pages/search.table.name.label')),
                 Tables\Columns\BadgeColumn::make('status')
+                    ->label(__('filament::resources/pages/search.table.status.label'))
                     ->colors([
                         'primary' => StatusEnum::VALIDATION->value,
                         'success' => StatusEnum::OPEN->value,
@@ -107,7 +125,7 @@ class SearchResource extends Resource
                     ->dateTime()
                     ->visible(Auth::user()->is_admin),
                 Tables\Columns\BadgeColumn::make('offices_count')
-                    ->label("Office's found")
+                    ->label(__('filament::resources/pages/search.table.offices.label'))
                     ->counts('offices'),
             ])
             ->filters([
@@ -115,7 +133,7 @@ class SearchResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make()->label('View offices'),
+                Tables\Actions\ViewAction::make()->label(__('filament::resources/pages/search.table.actions.view.label')),
             ])
             ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
     }
