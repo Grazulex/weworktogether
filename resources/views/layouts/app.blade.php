@@ -144,7 +144,7 @@
                 </div>
 
                 <p class="text copyright">
-                    © 2022 We Share Our Workspace powerd by JNKConsult BV. All Rights Reserved.
+                    © 2024 We Share Our Workspace powerd by JNKConsult BV. All Rights Reserved.
                 </p>
 
             </div>

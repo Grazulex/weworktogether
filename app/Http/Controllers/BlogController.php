@@ -9,7 +9,7 @@ class BlogController extends Controller
     public function index()
     {
         $lastestBlogs = Blog::latest()->take(3)->get();
-        $tags = Blog::all()->pluck('tags')->flatten()->unique();
+        $tags = Blog::all()->pluck('tags')->flatten()->unique()->random(10);
         $blogs = Blog::orderBy('created_at', 'desc')->paginate(10);
         $blogsByTag = Blog::all()->groupBy('tags');
 

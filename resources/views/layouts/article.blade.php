@@ -136,7 +136,7 @@
                 </div>
 
                 <p class="text copyright">
-                    © 2022 We Share Our Workspace. All Rights Reserved.
+                    © 2024 We Share Our Workspace. All Rights Reserved.
                 </p>
 
             </div>
